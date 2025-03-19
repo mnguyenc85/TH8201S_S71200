@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using MySql.Data.MySqlClient;
+
+using OxyPlot.Series;
+using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Annotations;
+using OxyPlot.Legends;
+using TH8201S.Data;
 
 namespace TH8201S
 {
@@ -22,9 +26,19 @@ namespace TH8201S
         //string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=Adatek2vn@server3; Pooling=false;Character Set=utf8";
         string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=manh123;Pooling=false;Character Set=utf8";
 
+        // Đồ thị OxyPlot
+        private PlotModel _plotModel;
+        private LineSeries _lineSeries;
+        private Axis _axX;
+        private Axis _axY;
+        private OxyPlot.Annotations.LineAnnotation _annoMaxForcePoint;
+        private TensileFeatures tensileFeatures = new TensileFeatures();
+
         public FrmData()
         {
             InitializeComponent();
+
+            InitChart();
         }
         private void BtStart_Click(object sender, EventArgs e)
         {
@@ -115,6 +129,22 @@ namespace TH8201S
             Cursor.Current = Cursors.Default;                                   
         }
 
+        private void btZoomAll_Click(object sender, EventArgs e)
+        {
+            _axX.Minimum = tensileFeatures.StrainMin - 2;
+            _axX.Maximum = tensileFeatures.StrainMax + 23;
+            _axY.Minimum = tensileFeatures.ForceMin - 2;
+            _axY.Maximum = tensileFeatures.ForceMax + 23;
+            _plotModel.InvalidatePlot(true);
+        }
+
+        private void btReset_Click(object sender, EventArgs e)
+        {
+            _axX.Reset();
+            _axY.Reset();
+            _plotModel.InvalidatePlot(true);
+        }
+
         private async void LoadAndFillData()
         {
             BtSearch.Enabled = false;
@@ -124,8 +154,6 @@ namespace TH8201S
 
             if (tbl != null)
             {
-                txt_Strain_max.Text = string.Format("{0:#,#0.0}", Convert.ToString(tbl.AsEnumerable().Max(row => row["REAL_STRAIN"])));
-                txt_Force_max.Text = string.Format("{0:#,##0.00}", Convert.ToString(tbl.AsEnumerable().Max(row => row["REAL_FORCE"])));
                 dataGridView1.DataSource = tbl;
                 dataGridView1.Columns[0].HeaderText = "Bill number";
                 dataGridView1.Columns[1].HeaderText = "Thời gian";
@@ -145,7 +173,7 @@ namespace TH8201S
             {
                 _conn = new MySqlConnection(connlocalhost);
                 _conn.Open();
-                string query = string.Format("SELECT * FROM phieutest WHERE BIll_NUMBER='{0}'", bill_id);
+                string query = string.Format("SELECT * FROM phieutest WHERE BIll_NUMBER='{0}' ORDER BY DATE_TIME", bill_id);
                 _dataAdapter = new MySqlDataAdapter(query, connlocalhost);
                 await _dataAdapter.FillAsync(tbl);
             }
@@ -189,28 +217,107 @@ namespace TH8201S
             BtSearch.Enabled = true;
         }
 
-        private void FillChart(DataTable tbl)
+        private void InitChart()
         {
-            chart_tensile.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
-            chart_tensile.ChartAreas["ChartArea1"].AxisX.Title = "STRAIN(mm)";
-            chart_tensile.ChartAreas["ChartArea1"].AxisY.Minimum = 0;
-            chart_tensile.ChartAreas["ChartArea1"].AxisY.Title = "FORCE(N)";
-            chart_tensile.ChartAreas["ChartArea1"].AxisX.LineWidth = 1;
-            chart_tensile.ChartAreas["ChartArea1"].AxisY.LineWidth = 1;
+            _plotModel = new PlotModel();
+            _lineSeries = new LineSeries() { Title = "Tensile", Color = OxyColors.Blue };
+            _lineSeries.TrackerFormatString = "{0}\r\n{1}: {2:0.00}\r\n{3}: {4:0.00}";
 
-            chart_tensile.ChartAreas["ChartArea1"].AxisY.TitleForeColor = Color.Blue;
-            chart_tensile.ChartAreas["ChartArea1"].AxisX.TitleForeColor = Color.Blue;
+            _plotModel.Legends.Add(new Legend()
+            {
+                LegendPosition = LegendPosition.LeftTop
+            });
 
-            chart_tensile.Series["Tensile"].BorderWidth = 3;
-            chart_tensile.Legends.Clear();
-            chart_tensile.Series["Tensile"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            chart_tensile.Series[0].Points.Clear();
-            chart_tensile.Series["Tensile"].XValueMember = "REAL_STRAIN";
-            chart_tensile.Series["Tensile"].YValueMembers = "REAL_FORCE";
+            _axX = new LinearAxis()
+            {
+                Position = AxisPosition.Bottom,
+                Title = "STRAIN (mm)",
+                MajorGridlineStyle = LineStyle.Solid,
+                //MinorGridlineStyle = LineStyle.Dot,
+                TitleColor = OxyColors.Blue,
+                Minimum = -5,
+                Maximum = 455
+            };
+            _axY = new LinearAxis()
+            {
+                Position = AxisPosition.Left,
+                Title = "FORCE (N)",
+                MajorGridlineStyle = LineStyle.Solid,
+                //MinorGridlineStyle = LineStyle.Dot,
+                TitleColor = OxyColors.Blue,
+                Minimum = -10,
+                Maximum = 260
+            };
 
-            chart_tensile.DataSource = tbl;
-            chart_tensile.DataBind();
+            var annoOx = new LineAnnotation()
+            {
+                Type = LineAnnotationType.Horizontal,
+                LineStyle = LineStyle.Solid,
+            };
+            var annoOy = new LineAnnotation()
+            {
+                Type = LineAnnotationType.Vertical,
+                LineStyle = LineStyle.Solid,
+            };
+
+            _annoMaxForcePoint = new LineAnnotation()
+            {
+                Type = LineAnnotationType.Horizontal,
+                Text = "",
+                TextVerticalAlignment = VerticalAlignment.Bottom,
+                TextHorizontalAlignment = OxyPlot.HorizontalAlignment.Right,
+                LineStyle = LineStyle.Dash,
+                Color = OxyColors.Green,
+            };
+
+            _plotModel.Axes.Add(_axX);
+            _plotModel.Axes.Add(_axY);
+            _plotModel.Series.Add(_lineSeries);
+            _plotModel.Annotations.Add(annoOx);
+            _plotModel.Annotations.Add(annoOy);
+            _plotModel.Annotations.Add(_annoMaxForcePoint);
+            plotData.Model = _plotModel;
         }
 
+        private void FillChart(DataTable tbl)
+        {
+            tensileFeatures.Reset();
+            _lineSeries.Points.Clear();
+            foreach (DataRow r in tbl.Rows)
+            {
+                double strain = (double)r["REAL_STRAIN"];
+                double force = (double)r["REAl_FORCE"];
+                tensileFeatures.Check(strain, force);
+                _lineSeries.Points.Add(new DataPoint(strain, force));
+            }
+
+            _annoMaxForcePoint.Text = string.Format("Force: {0} N, Strain: {1} mm", tensileFeatures.ForceMax, tensileFeatures.ForceMaxStrain);
+            _annoMaxForcePoint.MaximumX = tensileFeatures.ForceMaxStrain;
+            _annoMaxForcePoint.Y = tensileFeatures.ForceMax;
+
+            _plotModel.InvalidatePlot(true);
+
+            txt_Strain_max.Text = string.Format("{0:#,#0.0}", tensileFeatures.StrainMax);
+            txt_Force_max.Text = string.Format("{0:#,##0.00}", tensileFeatures.ForceMax);
+        }
+
+        private void chkAnnotation_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                if (!_plotModel.Annotations.Contains(_annoMaxForcePoint))
+                {
+                    _plotModel.Annotations.Add(_annoMaxForcePoint);
+                }
+            }
+            else
+            {
+                if (_plotModel.Annotations.Contains(_annoMaxForcePoint))
+                {
+                    _plotModel.Annotations.Remove(_annoMaxForcePoint);
+                }
+            }
+            _plotModel.InvalidatePlot(false);
+        }
     }
 }

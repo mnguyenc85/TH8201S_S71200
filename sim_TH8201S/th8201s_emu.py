@@ -105,8 +105,12 @@ class Simulator:
 
         # distance (mm)
         self.d += spd * self._delta
-        if self.d > 600: self.d = 600
-        if self.d < 5: self.d = 5
+        if self.d > 600: 
+            self.d = 600
+            self._d_return = 0
+        if self.d < 5:
+            self.d = 5
+            self._d_return = 0
 
         strain = self.d - self._d0
         if self.mau_ok:

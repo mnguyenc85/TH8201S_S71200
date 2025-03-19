@@ -13,11 +13,7 @@ namespace TH8201S.Data
         public bool IsSaved { get; set; }
         public List<ClassMeasurePoint> MeasurePoints { get; private set; } = new List<ClassMeasurePoint>();
 
-        public double MinForce {  get; set; }
-        public double MaxForce { get; set; }
-        public double MaxForce_Strain {  get; set; }
-        public double MinStrain {  get; set; }
-        public double MaxStrain { get; set; }
+        public TensileFeatures Features { get; private set; } = new TensileFeatures();
 
         /// <summary>
         /// Reset dữ liệu trong bill<br/>
@@ -46,25 +42,15 @@ namespace TH8201S.Data
                 {
                     if (SkipDupStrain && Math.Abs(point.RealStrain - p.RealStrain) < StrainEsp) return false;
                     MeasurePoints.Add(point.Clone());
-                    MinForce = Math.Min(MinForce, point.RealForce);
-                    if (MaxForce < point.RealForce)
-                    {
-                        MaxForce = point.RealForce;
-                        MaxForce_Strain = point.RealStrain;
-                    }
-                    MinStrain = Math.Min(MinStrain, point.RealStrain);
-                    MaxStrain = Math.Max(MaxStrain, point.RealStrain);
+                    Features.Check(point.RealStrain, point.RealForce);
                     return true;
                 }
             }
             else
             {
                 MeasurePoints.Add(point.Clone());
-                MinForce = point.RealForce;
-                MaxForce = point.RealForce;
-                MaxForce_Strain = point.RealStrain;
-                MinStrain = point.RealStrain;
-                MaxStrain = point.RealStrain;
+                Features.Reset();
+                Features.Check(point.RealStrain, point.RealForce);
                 return true;
             }
             return false;

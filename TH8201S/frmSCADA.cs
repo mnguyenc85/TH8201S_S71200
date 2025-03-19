@@ -615,21 +615,22 @@ namespace TH8201S
         private void FillPlot()
         {
             _lineSeries.Points.Add(new OxyPlot.DataPoint(_cur_point.RealStrain, _cur_point.RealForce));
+
+            var f = _cur_bill.Features;
+            _annoMaxForce.Y = f.ForceMax;
+            _annoMaxForce.MaximumX = f.ForceMaxStrain;
+            _annoMaxForce.Text = f.ForceMax.ToString();
             
-            _annoMaxForce.Y = _cur_bill.MaxForce;
-            _annoMaxForce.MaximumX = _cur_bill.MaxForce_Strain;
-            _annoMaxForce.Text = _cur_bill.MaxForce.ToString();
-            
-            _annoMaxForceStrain.X = _cur_bill.MaxForce_Strain;
-            _annoMaxForceStrain.MaximumY = _cur_bill.MaxForce;
-            _annoMaxForceStrain.Text = _cur_bill.MaxForce_Strain.ToString();
+            _annoMaxForceStrain.X = f.ForceMaxStrain;
+            _annoMaxForceStrain.MaximumY = f.ForceMax;
+            _annoMaxForceStrain.Text = f.ForceMaxStrain.ToString();
 
             if (chkZoomAll.Checked)
             {
-                _axX.Minimum = _cur_bill.MinStrain - 2;
-                _axX.Maximum = _cur_bill.MaxStrain + 23;
-                _axY.Minimum = _cur_bill.MinForce - 2;
-                _axY.Maximum = _cur_bill.MaxForce + 23;
+                _axX.Minimum = f.StrainMin - 2;
+                _axX.Maximum = f.StrainMax + 23;
+                _axY.Minimum = f.ForceMin - 2;
+                _axY.Maximum = f.ForceMax + 23;
             }
 
             _plotModel.InvalidatePlot(true);

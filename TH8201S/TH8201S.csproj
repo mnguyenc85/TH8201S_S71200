@@ -95,7 +95,7 @@
       <HintPath>..\packages\Google.Protobuf.3.30.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Interop.OPCAutomation">
-      <HintPath>..\..\zTools\Assemplies\Interop.OPCAutomation.dll</HintPath>
+      <HintPath>..\..\zTools\OPCAutomation\Interop.OPCAutomation.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
@@ -178,6 +178,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\TensileFeatures.cs" />
     <Compile Include="frmCalib.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,7 +303,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="StrainTester.ico" />
-    <Content Include="temp_code.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
