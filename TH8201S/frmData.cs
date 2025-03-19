@@ -44,7 +44,7 @@ namespace TH8201S
                 {
                     _conn = new MySqlConnection(connlocalhost);
                     _conn.Open();
-                    string querydel = "delete from phieutest where BILL_NUMBER = '" + Convert.ToInt32(txtbill.Text) + "'";
+                    string querydel = "delete from phieutest where BILL_NUMBER = '" + (int)numBillId.Value + "'";
                     _cmd = new MySqlCommand(querydel, _conn);
                     _cmd.ExecuteNonQuery();
                     _conn.Close();
@@ -60,7 +60,7 @@ namespace TH8201S
                 {
                     _conn = new MySqlConnection(connlocalhost);
                     _conn.Open();
-                    string query = "select  * from phieutest where BIll_NUMBER = '" + Convert.ToInt32(txtbill.Text) + "'";
+                    string query = "select  * from phieutest where BIll_NUMBER = '" + (int)numBillId.Value + "'";
                     _dataAdapter = new MySqlDataAdapter(query, connlocalhost);
                     _cmdBuilder = new MySqlCommandBuilder(_dataAdapter);
                     DataTable tam1 = new DataTable();
@@ -115,27 +115,26 @@ namespace TH8201S
             Cursor.Current = Cursors.Default;                                   
         }
 
-        private async Task LoadAndFillData()
+        private async void LoadAndFillData()
         {
             BtSearch.Enabled = false;
-            if (int.TryParse(txtbill.Text, out int bill_id))
+            int bill_id = (int)numBillId.Value;
+            
+            DataTable tbl = await LoadData(bill_id);
+
+            if (tbl != null)
             {
-                DataTable tbl = await LoadData(bill_id);
+                txt_Strain_max.Text = string.Format("{0:#,#0.0}", Convert.ToString(tbl.AsEnumerable().Max(row => row["REAL_STRAIN"])));
+                txt_Force_max.Text = string.Format("{0:#,##0.00}", Convert.ToString(tbl.AsEnumerable().Max(row => row["REAL_FORCE"])));
+                dataGridView1.DataSource = tbl;
+                dataGridView1.Columns[0].HeaderText = "Bill number";
+                dataGridView1.Columns[1].HeaderText = "Thời gian";
+                dataGridView1.Columns[2].HeaderText = "Strain";
+                dataGridView1.Columns[3].HeaderText = "Force";
+                dataGridView1.Columns[4].HeaderText = "Stress";
+                dataGridView1.Columns[5].HeaderText = "Elong";
 
-                if (tbl != null)
-                {
-                    txt_Strain_max.Text = string.Format("{0:#,#0.0}", Convert.ToString(tbl.AsEnumerable().Max(row => row["REAL_STRAIN"])));
-                    txt_Force_max.Text = string.Format("{0:#,##0.00}", Convert.ToString(tbl.AsEnumerable().Max(row => row["REAL_FORCE"])));
-                    dataGridView1.DataSource = tbl;
-                    dataGridView1.Columns[0].HeaderText = "Bill number";
-                    dataGridView1.Columns[1].HeaderText = "Thời gian";
-                    dataGridView1.Columns[2].HeaderText = "Strain";
-                    dataGridView1.Columns[3].HeaderText = "Force";
-                    dataGridView1.Columns[4].HeaderText = "Stress";
-                    dataGridView1.Columns[5].HeaderText = "Elong";
-
-                    FillChart(tbl);
-                }
+                FillChart(tbl);
             }
             BtSearch.Enabled = true;
         }
@@ -163,7 +162,7 @@ namespace TH8201S
             return tbl;
         }
 
-        private async Task LoadMaxBill()
+        private async void LoadMaxBill()
         {
             BtSearch.Enabled = false;
 
@@ -175,6 +174,7 @@ namespace TH8201S
                 _cmd = new MySqlCommand(query, _conn);
                 var ret = await _cmd.ExecuteScalarAsync();
                 lblMaxBill.Text = string.Format("/{0}", (int)ret);
+                numBillId.Maximum = (int)ret;
             }
             catch (Exception ex)
             {

@@ -434,7 +434,7 @@ namespace TH8201S
             btt_Stop.Visible = false;
             timer_start.Enabled = false;
 
-            DialogResult result = MessageBox.Show("bấm Yes kết thúc đơn hàng, bấm No để chạy lại đơn hàng  ", "Lưu dữ liệu đơn hàng", MessageBoxButtons.YesNoCancel);
+            DialogResult result = MessageBox.Show("Bấm Yes lưu đơn hàng, bấm No để chạy lại đơn hàng  ", "Lưu dữ liệu đơn hàng", MessageBoxButtons.YesNoCancel);
             if (result == DialogResult.Yes)
             {
                 // Lưu dữ liệu từ Bill vào csdl

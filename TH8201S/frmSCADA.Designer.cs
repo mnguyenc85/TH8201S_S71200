@@ -46,7 +46,6 @@
             this.pnl12 = new System.Windows.Forms.Panel();
             this.pnl122 = new TH8201S.UserControls.MyCustomPanel();
             this.txt_Elong_min = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.txt_Force_min = new System.Windows.Forms.TextBox();
             this.txt_Elong_max = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -62,6 +61,7 @@
             this.txt_Force = new System.Windows.Forms.TextBox();
             this.txt_Strain_min = new System.Windows.Forms.TextBox();
             this.txt_Stress_max = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.pnl121 = new TH8201S.UserControls.MyCustomPanel();
             this.txtbox_chieurong = new System.Windows.Forms.TextBox();
             this.txt_mode = new System.Windows.Forms.TextBox();
@@ -86,12 +86,13 @@
             this.btt_Stop = new System.Windows.Forms.Button();
             this.btt_Fastdown = new System.Windows.Forms.Button();
             this.statusMain = new System.Windows.Forms.StatusStrip();
-            this.slblTime1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.slblTime2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.slblCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.slblTime1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.slblTime2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.slblCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pnl123 = new System.Windows.Forms.Panel();
             this.mnuMain.SuspendLayout();
             this.pnl1.SuspendLayout();
             this.pnl13.SuspendLayout();
@@ -236,6 +237,7 @@
             // pnl12
             // 
             this.pnl12.Controls.Add(this.pnl122);
+            this.pnl12.Controls.Add(this.pnl123);
             this.pnl12.Controls.Add(this.pnl121);
             this.pnl12.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl12.Location = new System.Drawing.Point(199, 7);
@@ -269,7 +271,7 @@
             this.pnl122.Margin = new System.Windows.Forms.Padding(4);
             this.pnl122.Name = "pnl122";
             this.pnl122.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.pnl122.Size = new System.Drawing.Size(1022, 148);
+            this.pnl122.Size = new System.Drawing.Size(1016, 148);
             this.pnl122.TabIndex = 111;
             // 
             // txt_Elong_min
@@ -284,19 +286,6 @@
             this.txt_Elong_min.TabIndex = 12;
             this.txt_Elong_min.Text = "0";
             this.txt_Elong_min.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Navy;
-            this.label9.Location = new System.Drawing.Point(540, 100);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(159, 31);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "ELONG(%)";
             // 
             // txt_Force_min
             // 
@@ -494,6 +483,19 @@
             this.txt_Stress_max.TabIndex = 11;
             this.txt_Stress_max.Text = "0";
             this.txt_Stress_max.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Navy;
+            this.label9.Location = new System.Drawing.Point(540, 100);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(159, 31);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "ELONG(%)";
             // 
             // pnl121
             // 
@@ -840,6 +842,12 @@
             this.statusMain.TabIndex = 111;
             this.statusMain.Text = "statusMain";
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(106, 24);
+            this.toolStripStatusLabel1.Text = "PLC Scan Cycle";
+            // 
             // slblTime1
             // 
             this.slblTime1.AutoSize = false;
@@ -847,6 +855,13 @@
             this.slblTime1.Size = new System.Drawing.Size(48, 24);
             this.slblTime1.Text = "0 ms";
             this.slblTime1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(78, 24);
+            this.toolStripStatusLabel2.Text = "Plot Cycle";
             // 
             // slblTime2
             // 
@@ -856,6 +871,13 @@
             this.slblTime2.Text = "0 ms";
             this.slblTime2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(81, 24);
+            this.toolStripStatusLabel3.Text = "No. points";
+            // 
             // slblCount
             // 
             this.slblCount.AutoSize = false;
@@ -864,25 +886,13 @@
             this.slblCount.Text = "0";
             this.slblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // toolStripStatusLabel1
+            // pnl123
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(106, 24);
-            this.toolStripStatusLabel1.Text = "PLC Scan Cycle";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(78, 24);
-            this.toolStripStatusLabel2.Text = "Plot Cycle";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(81, 24);
-            this.toolStripStatusLabel3.Text = "No. points";
+            this.pnl123.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl123.Location = new System.Drawing.Point(1024, 0);
+            this.pnl123.Name = "pnl123";
+            this.pnl123.Size = new System.Drawing.Size(6, 148);
+            this.pnl123.TabIndex = 112;
             // 
             // frmSCADA
             // 
@@ -984,5 +994,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.Panel pnl123;
     }
 }

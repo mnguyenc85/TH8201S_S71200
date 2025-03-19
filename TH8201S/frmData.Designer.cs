@@ -38,13 +38,13 @@
             this.pnl12 = new TH8201S.UserControls.MyCustomPanel();
             this.chart_tensile = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnl11 = new TH8201S.UserControls.MyCustomPanel();
+            this.numBillId = new System.Windows.Forms.NumericUpDown();
             this.lblMaxBill = new System.Windows.Forms.Label();
             this.btt_Delete = new System.Windows.Forms.Button();
             this.txt_Strain_max = new System.Windows.Forms.TextBox();
             this.btn_save = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtbill = new System.Windows.Forms.TextBox();
             this.BtSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Force_max = new System.Windows.Forms.TextBox();
@@ -57,6 +57,7 @@
             this.pnl12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_tensile)).BeginInit();
             this.pnl11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numBillId)).BeginInit();
             this.pnl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -122,13 +123,13 @@
             // 
             // pnl11
             // 
+            this.pnl11.Controls.Add(this.numBillId);
             this.pnl11.Controls.Add(this.lblMaxBill);
             this.pnl11.Controls.Add(this.btt_Delete);
             this.pnl11.Controls.Add(this.txt_Strain_max);
             this.pnl11.Controls.Add(this.btn_save);
             this.pnl11.Controls.Add(this.label3);
             this.pnl11.Controls.Add(this.label1);
-            this.pnl11.Controls.Add(this.txtbill);
             this.pnl11.Controls.Add(this.BtSearch);
             this.pnl11.Controls.Add(this.label2);
             this.pnl11.Controls.Add(this.txt_Force_max);
@@ -139,12 +140,26 @@
             this.pnl11.Size = new System.Drawing.Size(201, 539);
             this.pnl11.TabIndex = 125;
             // 
+            // numBillId
+            // 
+            this.numBillId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numBillId.Location = new System.Drawing.Point(6, 40);
+            this.numBillId.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numBillId.Name = "numBillId";
+            this.numBillId.Size = new System.Drawing.Size(110, 30);
+            this.numBillId.TabIndex = 124;
+            this.numBillId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // lblMaxBill
             // 
             this.lblMaxBill.AutoSize = true;
             this.lblMaxBill.BackColor = System.Drawing.Color.Transparent;
             this.lblMaxBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaxBill.Location = new System.Drawing.Point(119, 9);
+            this.lblMaxBill.Location = new System.Drawing.Point(122, 42);
             this.lblMaxBill.Name = "lblMaxBill";
             this.lblMaxBill.Size = new System.Drawing.Size(73, 25);
             this.lblMaxBill.TabIndex = 123;
@@ -154,7 +169,7 @@
             // 
             this.btt_Delete.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btt_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Delete.Location = new System.Drawing.Point(6, 357);
+            this.btt_Delete.Location = new System.Drawing.Point(6, 403);
             this.btt_Delete.Name = "btt_Delete";
             this.btt_Delete.Size = new System.Drawing.Size(189, 59);
             this.btt_Delete.TabIndex = 110;
@@ -166,7 +181,7 @@
             // 
             this.txt_Strain_max.BackColor = System.Drawing.Color.Red;
             this.txt_Strain_max.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Strain_max.Location = new System.Drawing.Point(6, 239);
+            this.txt_Strain_max.Location = new System.Drawing.Point(6, 285);
             this.txt_Strain_max.Multiline = true;
             this.txt_Strain_max.Name = "txt_Strain_max";
             this.txt_Strain_max.Size = new System.Drawing.Size(186, 41);
@@ -177,7 +192,7 @@
             // 
             this.btn_save.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.Location = new System.Drawing.Point(6, 292);
+            this.btn_save.Location = new System.Drawing.Point(6, 338);
             this.btn_save.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(189, 59);
@@ -203,7 +218,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 205);
+            this.label1.Location = new System.Drawing.Point(6, 251);
             this.label1.Margin = new System.Windows.Forms.Padding(3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(186, 28);
@@ -211,21 +226,11 @@
             this.label1.Text = "Max. Strain";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtbill
-            // 
-            this.txtbill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbill.Location = new System.Drawing.Point(53, 6);
-            this.txtbill.Multiline = true;
-            this.txtbill.Name = "txtbill";
-            this.txtbill.Size = new System.Drawing.Size(60, 38);
-            this.txtbill.TabIndex = 117;
-            this.txtbill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // BtSearch
             // 
             this.BtSearch.BackColor = System.Drawing.Color.MediumTurquoise;
             this.BtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtSearch.Location = new System.Drawing.Point(6, 50);
+            this.BtSearch.Location = new System.Drawing.Point(6, 84);
             this.BtSearch.Name = "BtSearch";
             this.BtSearch.Size = new System.Drawing.Size(189, 59);
             this.BtSearch.TabIndex = 109;
@@ -238,7 +243,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(6, 124);
+            this.label2.Location = new System.Drawing.Point(6, 170);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(186, 28);
@@ -250,7 +255,7 @@
             // 
             this.txt_Force_max.BackColor = System.Drawing.Color.Red;
             this.txt_Force_max.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Force_max.Location = new System.Drawing.Point(6, 158);
+            this.txt_Force_max.Location = new System.Drawing.Point(6, 204);
             this.txt_Force_max.Multiline = true;
             this.txt_Force_max.Name = "txt_Force_max";
             this.txt_Force_max.Size = new System.Drawing.Size(186, 41);
@@ -305,6 +310,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart_tensile)).EndInit();
             this.pnl11.ResumeLayout(false);
             this.pnl11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numBillId)).EndInit();
             this.pnl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -315,7 +321,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.SaveFileDialog sFDialog;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_tensile;
-        private System.Windows.Forms.TextBox txtbill;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Button btt_Delete;
         private System.Windows.Forms.Label label3;
@@ -330,5 +335,6 @@
         private UserControls.MyCustomPanel pnl2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label lblMaxBill;
+        private System.Windows.Forms.NumericUpDown numBillId;
     }
 }
