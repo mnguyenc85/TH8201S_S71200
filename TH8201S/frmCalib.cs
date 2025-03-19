@@ -19,20 +19,10 @@ namespace TH8201S
             InitializeComponent();
         }
 
-        private void btt_SET_ZERO_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btt_SET_ZERO_MouseDown(object sender, MouseEventArgs e)
         {
             WriteItems.SetValue(1, 19);
             PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
-        }
-
-        private void panelEx1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Calib_Load(object sender, EventArgs e)
@@ -195,8 +185,7 @@ namespace TH8201S
         {
             float SET_MASS;
             if (e.KeyCode == Keys.Enter)
-
-
+            {
                 if (float.TryParse(this.txt_Set_Mass.Text, out SET_MASS))
                 {
 
@@ -211,7 +200,6 @@ namespace TH8201S
                         txt_Set_Mass.Text = "0.0";
                         WriteItems.SetValue(txt_Set_Mass.Text, 39);
                         PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
-
                     }
                 }
                 else
@@ -219,8 +207,8 @@ namespace TH8201S
                     txt_Set_Mass.Text = "0.0";
                     WriteItems.SetValue(txt_Set_Mass.Text, 39);
                     PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
-
                 }
+            }
         }
     }
 }

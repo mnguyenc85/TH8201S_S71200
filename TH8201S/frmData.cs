@@ -30,6 +30,10 @@ namespace TH8201S
         {
             LoadAndFillData();
         }
+        private void FrmData_Load(object sender, EventArgs e)
+        {
+            LoadMaxBill();
+        }
 
         private void BtDelete_Click(object sender, EventArgs e)
         {
@@ -159,6 +163,32 @@ namespace TH8201S
             return tbl;
         }
 
+        private async Task LoadMaxBill()
+        {
+            BtSearch.Enabled = false;
+
+            try
+            {
+                _conn = new MySqlConnection(connlocalhost);
+                _conn.Open();
+                string query = "SELECT MAX(BILL_NUMBER) FROM phieutest";
+                _cmd = new MySqlCommand(query, _conn);
+                var ret = await _cmd.ExecuteScalarAsync();
+                lblMaxBill.Text = string.Format("/{0}", (int)ret);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể kết nối CSDL!");
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                _conn.Close();
+            }
+
+            BtSearch.Enabled = true;
+        }
+
         private void FillChart(DataTable tbl)
         {
             chart_tensile.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
@@ -181,5 +211,6 @@ namespace TH8201S
             chart_tensile.DataSource = tbl;
             chart_tensile.DataBind();
         }
+
     }
 }

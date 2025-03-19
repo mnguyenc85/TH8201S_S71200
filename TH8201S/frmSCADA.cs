@@ -23,15 +23,11 @@ namespace TH8201S
     public partial class frmSCADA : Form
     {
         private MySqlConnection _conn;
-        private MySqlCommandBuilder cmd;
         private MySqlCommand cmdsend;
-        private MySqlDataAdapter dtp;
-        private string connserver = "Server=222.252.4.119;port=1433;Database=th8201s;UId=root;Pwd=Adatek2vn@server3;Pooling=false;Character Set = utf8";
+        //private string connserver = "Server=222.252.4.119;port=1433;Database=th8201s;UId=root;Pwd=Adatek2vn@server3;Pooling=false;Character Set = utf8";
         //private string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=Adatek2vn@server3;Pooling=false;Character Set = utf8";
         private string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=manh123;Pooling=false;Character Set = utf8";
         //DataTable mytable, mytable1, mytable2;
-        private int mode;
-        private int BillMax;
         //==========================WATCHDOG================================
         string Watchdog_value = "0";
         //=====================KEPServerEX CONNECT=====================
@@ -56,8 +52,7 @@ namespace TH8201S
         bool AU_MAN;
         bool FINISH;
 
-        int Select_Mode;
-        string Order_ID;
+        private int BillMax;
         bool report_trigger;
 
         // Đồ thị OxyPlot
@@ -121,6 +116,18 @@ namespace TH8201S
                 Minimum = -10,
                 Maximum = 260                
             };
+
+            var annoOx = new LineAnnotation()
+            {
+                Type = LineAnnotationType.Horizontal,
+                LineStyle = LineStyle.Solid,
+            };
+            var annoOy = new LineAnnotation()
+            {
+                Type = LineAnnotationType.Vertical,
+                LineStyle = LineStyle.Solid,
+            };
+
             _annoMaxForce = new LineAnnotation()
             {
                 Type = LineAnnotationType.Horizontal,
@@ -137,6 +144,8 @@ namespace TH8201S
             _plotModel.Axes.Add(_axX);
             _plotModel.Axes.Add(_axY);
             _plotModel.Series.Add(_lineSeries);
+            _plotModel.Annotations.Add(annoOx);
+            _plotModel.Annotations.Add(annoOy);
             _plotModel.Annotations.Add(_annoMaxForce);
             _plotModel.Annotations.Add(_annoMaxForceStrain);
             plotTensile.Model = _plotModel;

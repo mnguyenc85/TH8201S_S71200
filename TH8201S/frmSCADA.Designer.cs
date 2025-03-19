@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSCADA));
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.hiệuChỉnhCânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mniThongKe = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,16 +38,12 @@
             this.timer_start = new System.Windows.Forms.Timer(this.components);
             this.pnl1 = new System.Windows.Forms.Panel();
             this.pnl13 = new System.Windows.Forms.Panel();
-            this.pnl12 = new System.Windows.Forms.Panel();
-            this.statusMain = new System.Windows.Forms.StatusStrip();
-            this.slblTime1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.slblTime2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.slblCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnl131 = new TH8201S.UserControls.MyCustomPanel();
             this.plotTensile = new OxyPlot.WindowsForms.PlotView();
             this.pnlPlotControls = new System.Windows.Forms.Panel();
             this.btPlotReset = new System.Windows.Forms.Button();
             this.chkZoomAll = new System.Windows.Forms.CheckBox();
+            this.pnl12 = new System.Windows.Forms.Panel();
             this.pnl122 = new TH8201S.UserControls.MyCustomPanel();
             this.txt_Elong_min = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -88,16 +85,23 @@
             this.btt_Fastup = new System.Windows.Forms.Button();
             this.btt_Stop = new System.Windows.Forms.Button();
             this.btt_Fastdown = new System.Windows.Forms.Button();
+            this.statusMain = new System.Windows.Forms.StatusStrip();
+            this.slblTime1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.slblTime2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.slblCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.mnuMain.SuspendLayout();
             this.pnl1.SuspendLayout();
             this.pnl13.SuspendLayout();
-            this.pnl12.SuspendLayout();
-            this.statusMain.SuspendLayout();
             this.pnl131.SuspendLayout();
             this.pnlPlotControls.SuspendLayout();
+            this.pnl12.SuspendLayout();
             this.pnl122.SuspendLayout();
             this.pnl121.SuspendLayout();
             this.pnl11.SuspendLayout();
+            this.statusMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuMain
@@ -110,28 +114,28 @@
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
             this.mnuMain.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.mnuMain.Size = new System.Drawing.Size(1582, 30);
+            this.mnuMain.Size = new System.Drawing.Size(1582, 28);
             this.mnuMain.TabIndex = 0;
             this.mnuMain.Text = "menuStrip1";
             // 
             // hiệuChỉnhCânToolStripMenuItem
             // 
             this.hiệuChỉnhCânToolStripMenuItem.Name = "hiệuChỉnhCânToolStripMenuItem";
-            this.hiệuChỉnhCânToolStripMenuItem.Size = new System.Drawing.Size(57, 26);
+            this.hiệuChỉnhCânToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.hiệuChỉnhCânToolStripMenuItem.Text = "Calib";
             this.hiệuChỉnhCânToolStripMenuItem.Click += new System.EventHandler(this.MniHieuChinhCan_Click);
             // 
             // mniThongKe
             // 
             this.mniThongKe.Name = "mniThongKe";
-            this.mniThongKe.Size = new System.Drawing.Size(55, 26);
+            this.mniThongKe.Size = new System.Drawing.Size(55, 24);
             this.mniThongKe.Text = "Data";
             this.mniThongKe.Click += new System.EventHandler(this.mniThongKe_Click);
             // 
             // càiĐặtToolStripMenuItem
             // 
             this.càiĐặtToolStripMenuItem.Name = "càiĐặtToolStripMenuItem";
-            this.càiĐặtToolStripMenuItem.Size = new System.Drawing.Size(70, 26);
+            this.càiĐặtToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.càiĐặtToolStripMenuItem.Text = "Setting";
             // 
             // Timer_Watchdog
@@ -151,11 +155,11 @@
             this.pnl1.Controls.Add(this.pnl12);
             this.pnl1.Controls.Add(this.pnl11);
             this.pnl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl1.Location = new System.Drawing.Point(0, 30);
+            this.pnl1.Location = new System.Drawing.Point(0, 28);
             this.pnl1.Margin = new System.Windows.Forms.Padding(4);
             this.pnl1.Name = "pnl1";
             this.pnl1.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.pnl1.Size = new System.Drawing.Size(1582, 841);
+            this.pnl1.Size = new System.Drawing.Size(1582, 839);
             this.pnl1.TabIndex = 110;
             // 
             // pnl13
@@ -166,58 +170,8 @@
             this.pnl13.Margin = new System.Windows.Forms.Padding(4);
             this.pnl13.Name = "pnl13";
             this.pnl13.Padding = new System.Windows.Forms.Padding(8, 7, 0, 0);
-            this.pnl13.Size = new System.Drawing.Size(1375, 679);
+            this.pnl13.Size = new System.Drawing.Size(1375, 677);
             this.pnl13.TabIndex = 111;
-            // 
-            // pnl12
-            // 
-            this.pnl12.Controls.Add(this.pnl122);
-            this.pnl12.Controls.Add(this.pnl121);
-            this.pnl12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnl12.Location = new System.Drawing.Point(199, 7);
-            this.pnl12.Margin = new System.Windows.Forms.Padding(4);
-            this.pnl12.Name = "pnl12";
-            this.pnl12.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.pnl12.Size = new System.Drawing.Size(1375, 148);
-            this.pnl12.TabIndex = 110;
-            // 
-            // statusMain
-            // 
-            this.statusMain.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.slblTime1,
-            this.slblTime2,
-            this.slblCount});
-            this.statusMain.Location = new System.Drawing.Point(0, 871);
-            this.statusMain.Name = "statusMain";
-            this.statusMain.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusMain.Size = new System.Drawing.Size(1582, 26);
-            this.statusMain.TabIndex = 111;
-            this.statusMain.Text = "statusMain";
-            // 
-            // slblTime1
-            // 
-            this.slblTime1.AutoSize = false;
-            this.slblTime1.Name = "slblTime1";
-            this.slblTime1.Size = new System.Drawing.Size(48, 20);
-            this.slblTime1.Text = "0 ms";
-            this.slblTime1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // slblTime2
-            // 
-            this.slblTime2.AutoSize = false;
-            this.slblTime2.Name = "slblTime2";
-            this.slblTime2.Size = new System.Drawing.Size(48, 20);
-            this.slblTime2.Text = "0 ms";
-            this.slblTime2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // slblCount
-            // 
-            this.slblCount.AutoSize = false;
-            this.slblCount.Name = "slblCount";
-            this.slblCount.Size = new System.Drawing.Size(48, 20);
-            this.slblCount.Text = "0";
-            this.slblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnl131
             // 
@@ -228,7 +182,7 @@
             this.pnl131.Margin = new System.Windows.Forms.Padding(4);
             this.pnl131.Name = "pnl131";
             this.pnl131.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.pnl131.Size = new System.Drawing.Size(1367, 672);
+            this.pnl131.Size = new System.Drawing.Size(1367, 670);
             this.pnl131.TabIndex = 0;
             // 
             // plotTensile
@@ -238,7 +192,7 @@
             this.plotTensile.Location = new System.Drawing.Point(8, 7);
             this.plotTensile.Name = "plotTensile";
             this.plotTensile.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotTensile.Size = new System.Drawing.Size(1351, 620);
+            this.plotTensile.Size = new System.Drawing.Size(1351, 618);
             this.plotTensile.TabIndex = 0;
             this.plotTensile.Text = "plotView1";
             this.plotTensile.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
@@ -250,7 +204,7 @@
             this.pnlPlotControls.Controls.Add(this.btPlotReset);
             this.pnlPlotControls.Controls.Add(this.chkZoomAll);
             this.pnlPlotControls.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlPlotControls.Location = new System.Drawing.Point(8, 627);
+            this.pnlPlotControls.Location = new System.Drawing.Point(8, 625);
             this.pnlPlotControls.Name = "pnlPlotControls";
             this.pnlPlotControls.Padding = new System.Windows.Forms.Padding(3);
             this.pnlPlotControls.Size = new System.Drawing.Size(1351, 38);
@@ -258,7 +212,7 @@
             // 
             // btPlotReset
             // 
-            this.btPlotReset.Location = new System.Drawing.Point(94, 6);
+            this.btPlotReset.Location = new System.Drawing.Point(68, 6);
             this.btPlotReset.Name = "btPlotReset";
             this.btPlotReset.Size = new System.Drawing.Size(63, 26);
             this.btPlotReset.TabIndex = 1;
@@ -273,16 +227,27 @@
             this.chkZoomAll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkZoomAll.Location = new System.Drawing.Point(6, 10);
             this.chkZoomAll.Name = "chkZoomAll";
-            this.chkZoomAll.Size = new System.Drawing.Size(82, 20);
+            this.chkZoomAll.Size = new System.Drawing.Size(56, 20);
             this.chkZoomAll.TabIndex = 0;
-            this.chkZoomAll.Text = "Zoom All";
+            this.chkZoomAll.Text = "Auto";
             this.chkZoomAll.UseVisualStyleBackColor = true;
             this.chkZoomAll.CheckedChanged += new System.EventHandler(this.chkZoomAll_CheckedChanged);
+            // 
+            // pnl12
+            // 
+            this.pnl12.Controls.Add(this.pnl122);
+            this.pnl12.Controls.Add(this.pnl121);
+            this.pnl12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl12.Location = new System.Drawing.Point(199, 7);
+            this.pnl12.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl12.Name = "pnl12";
+            this.pnl12.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.pnl12.Size = new System.Drawing.Size(1375, 148);
+            this.pnl12.TabIndex = 110;
             // 
             // pnl122
             // 
             this.pnl122.Controls.Add(this.txt_Elong_min);
-            this.pnl122.Controls.Add(this.label9);
             this.pnl122.Controls.Add(this.txt_Force_min);
             this.pnl122.Controls.Add(this.txt_Elong_max);
             this.pnl122.Controls.Add(this.label8);
@@ -298,6 +263,7 @@
             this.pnl122.Controls.Add(this.txt_Force);
             this.pnl122.Controls.Add(this.txt_Strain_min);
             this.pnl122.Controls.Add(this.txt_Stress_max);
+            this.pnl122.Controls.Add(this.label9);
             this.pnl122.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl122.Location = new System.Drawing.Point(8, 0);
             this.pnl122.Margin = new System.Windows.Forms.Padding(4);
@@ -713,7 +679,7 @@
             this.pnl11.Margin = new System.Windows.Forms.Padding(4);
             this.pnl11.Name = "pnl11";
             this.pnl11.Padding = new System.Windows.Forms.Padding(4);
-            this.pnl11.Size = new System.Drawing.Size(191, 827);
+            this.pnl11.Size = new System.Drawing.Size(191, 825);
             this.pnl11.TabIndex = 109;
             // 
             // btt_Start
@@ -857,6 +823,67 @@
             this.btt_Fastdown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btFastdown_MouseDown);
             this.btt_Fastdown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btFastdown_MouseUp);
             // 
+            // statusMain
+            // 
+            this.statusMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.slblTime1,
+            this.toolStripStatusLabel2,
+            this.slblTime2,
+            this.toolStripStatusLabel3,
+            this.slblCount});
+            this.statusMain.Location = new System.Drawing.Point(0, 867);
+            this.statusMain.Name = "statusMain";
+            this.statusMain.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusMain.Size = new System.Drawing.Size(1582, 30);
+            this.statusMain.TabIndex = 111;
+            this.statusMain.Text = "statusMain";
+            // 
+            // slblTime1
+            // 
+            this.slblTime1.AutoSize = false;
+            this.slblTime1.Name = "slblTime1";
+            this.slblTime1.Size = new System.Drawing.Size(48, 24);
+            this.slblTime1.Text = "0 ms";
+            this.slblTime1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // slblTime2
+            // 
+            this.slblTime2.AutoSize = false;
+            this.slblTime2.Name = "slblTime2";
+            this.slblTime2.Size = new System.Drawing.Size(48, 24);
+            this.slblTime2.Text = "0 ms";
+            this.slblTime2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // slblCount
+            // 
+            this.slblCount.AutoSize = false;
+            this.slblCount.Name = "slblCount";
+            this.slblCount.Size = new System.Drawing.Size(48, 24);
+            this.slblCount.Text = "0";
+            this.slblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(106, 24);
+            this.toolStripStatusLabel1.Text = "PLC Scan Cycle";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(78, 24);
+            this.toolStripStatusLabel2.Text = "Plot Cycle";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(81, 24);
+            this.toolStripStatusLabel3.Text = "No. points";
+            // 
             // frmSCADA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -865,6 +892,7 @@
             this.Controls.Add(this.pnl1);
             this.Controls.Add(this.mnuMain);
             this.Controls.Add(this.statusMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuMain;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1600, 800);
@@ -876,17 +904,17 @@
             this.mnuMain.PerformLayout();
             this.pnl1.ResumeLayout(false);
             this.pnl13.ResumeLayout(false);
-            this.pnl12.ResumeLayout(false);
-            this.statusMain.ResumeLayout(false);
-            this.statusMain.PerformLayout();
             this.pnl131.ResumeLayout(false);
             this.pnlPlotControls.ResumeLayout(false);
             this.pnlPlotControls.PerformLayout();
+            this.pnl12.ResumeLayout(false);
             this.pnl122.ResumeLayout(false);
             this.pnl122.PerformLayout();
             this.pnl121.ResumeLayout(false);
             this.pnl121.PerformLayout();
             this.pnl11.ResumeLayout(false);
+            this.statusMain.ResumeLayout(false);
+            this.statusMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -953,5 +981,8 @@
         private System.Windows.Forms.Panel pnlPlotControls;
         private System.Windows.Forms.CheckBox chkZoomAll;
         private System.Windows.Forms.Button btPlotReset;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
     }
 }

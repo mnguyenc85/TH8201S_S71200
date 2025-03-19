@@ -18,7 +18,7 @@ namespace TH8201S
         MySqlCommand cmdsend;
         MySqlDataAdapter dtp;
         string conn = "Server = 222.252.4.119; port =1433; Database = th8201s; UId = root; Pwd = Adatek2vn@server3; Pooling=false;Character Set = utf8";
-        DataTable mytable, mytable1, mytable2;
+        DataTable mytable, mytable1;
         int index;
         int c;
         public int lap()

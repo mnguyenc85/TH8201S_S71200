@@ -37,7 +37,7 @@
             this.txtuser = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.myCustomPanel1 = new TH8201S.UserControls.MyCustomPanel();
-            this.btLogin = new Glass.GlassButton();
+            this.BtLogin = new TH8201S.UserControls.GlassButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.myCustomPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -138,7 +138,7 @@
             // 
             // myCustomPanel1
             // 
-            this.myCustomPanel1.Controls.Add(this.btLogin);
+            this.myCustomPanel1.Controls.Add(this.BtLogin);
             this.myCustomPanel1.Controls.Add(this.txtpass);
             this.myCustomPanel1.Controls.Add(this.ckbsave);
             this.myCustomPanel1.Controls.Add(this.label4);
@@ -154,16 +154,19 @@
             this.myCustomPanel1.Size = new System.Drawing.Size(452, 263);
             this.myCustomPanel1.TabIndex = 1;
             // 
-            // btLogin
+            // BtLogin
             // 
-            this.btLogin.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLogin.Location = new System.Drawing.Point(149, 212);
-            this.btLogin.Name = "btLogin";
-            this.btLogin.OuterBorderColor = System.Drawing.Color.Transparent;
-            this.btLogin.Size = new System.Drawing.Size(294, 39);
-            this.btLogin.TabIndex = 21;
-            this.btLogin.Text = "Login";
-            this.btLogin.Click += new System.EventHandler(this.btnlog_Click_1);
+            this.BtLogin.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtLogin.FontAntiAlias = true;
+            this.BtLogin.ForeColor = System.Drawing.Color.DimGray;
+            this.BtLogin.Location = new System.Drawing.Point(149, 207);
+            this.BtLogin.Name = "BtLogin";
+            this.BtLogin.RoundedCornerRadius = 6;
+            this.BtLogin.Size = new System.Drawing.Size(294, 41);
+            this.BtLogin.TabIndex = 20;
+            this.BtLogin.Text = "Login";
+            this.BtLogin.UseVisualStyleBackColor = true;
+            this.BtLogin.Click += new System.EventHandler(this.btnlog_Click_1);
             // 
             // frmLogin
             // 
@@ -193,7 +196,7 @@
         private System.Windows.Forms.TextBox txtuser;
         private System.Windows.Forms.Label label1;
         private UserControls.MyCustomPanel myCustomPanel1;
-        private Glass.GlassButton btLogin;
+        private UserControls.GlassButton BtLogin;
     }
 }
 
