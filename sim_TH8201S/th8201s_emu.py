@@ -94,7 +94,8 @@ class Simulator:
                 elif delta_d > 0.05: spd = -delta_d / 2
                 elif delta_d < -5: spd = SPD_FAST
                 elif delta_d < -0.01: spd = delta_d / 2
-                else:
+                elif abs(delta_d) < 0.00001:
+                    self._d = 0
                     self._d_return = 0
             else:
                 if bFastUp: spd = SPD_FAST

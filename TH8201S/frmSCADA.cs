@@ -107,7 +107,7 @@ namespace TH8201S
                 Title = "STRAIN (mm)",
                 MajorGridlineStyle = LineStyle.Solid,
                 //MinorGridlineStyle = LineStyle.Dot,
-                AxislineColor = OxyColors.Blue,
+                TitleColor = OxyColors.Blue,
                 Minimum = -5,
                 Maximum = 455
             };
@@ -117,7 +117,7 @@ namespace TH8201S
                 Title = "FORCE (N)",
                 MajorGridlineStyle = LineStyle.Solid,
                 //MinorGridlineStyle = LineStyle.Dot,
-                AxislineColor = OxyColors.Blue,
+                TitleColor = OxyColors.Blue,
                 Minimum = -10,
                 Maximum = 260                
             };
@@ -386,7 +386,7 @@ namespace TH8201S
         }
         private void mniThongKe_Click(object sender, EventArgs e)
         {
-            data calibForm = new data();
+            FrmData calibForm = new FrmData();
             calibForm.ShowDialog();
         }
 
@@ -471,6 +471,7 @@ namespace TH8201S
 
                 _cur_bill.Renew(BillMax + 1);
                 txtBill.Text = _cur_bill.Id.ToString();
+                _lineSeries.Points.Clear();
 
                 WriteItems.SetValue(1, 1);
                 PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);

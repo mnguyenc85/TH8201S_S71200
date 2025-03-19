@@ -12,30 +12,38 @@ using MySql.Data.MySqlClient;
 
 namespace TH8201S
 {
-    public partial class data : Form
+    public partial class FrmData : Form
     {
-        MySqlConnection strconn;
-        MySqlCommandBuilder cmd;
-        MySqlCommand cmdsend;
-        MySqlDataAdapter dtp;
+        private MySqlConnection _conn;
+        private MySqlCommandBuilder _cmdBuilder;
+        private MySqlCommand _cmd;
+        private MySqlDataAdapter _dataAdapter;
         string connserver = "Server=222.252.4.119;port=1433;Database=th8201s;UId=root;Pwd=Adatek2vn@server3;Pooling=false;Character Set=utf8";
         //string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=Adatek2vn@server3; Pooling=false;Character Set=utf8";
         string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=manh123;Pooling=false;Character Set=utf8";
-        //DataTable mytable, mytable1, mytable2;
 
-        private void btt_Delete_Click(object sender, EventArgs e)
+        public FrmData()
+        {
+            InitializeComponent();
+        }
+        private void BtStart_Click(object sender, EventArgs e)
+        {
+            LoadAndFillData();
+        }
+
+        private void BtDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa bill đã chạy  ", "Xóa dữ liệu đơn hàng", MessageBoxButtons.YesNoCancel);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 try
                 {
-                    strconn = new MySqlConnection(connlocalhost);
-                    strconn.Open();
+                    _conn = new MySqlConnection(connlocalhost);
+                    _conn.Open();
                     string querydel = "delete from phieutest where BILL_NUMBER = '" + Convert.ToInt32(txtbill.Text) + "'";
-                    cmdsend = new MySqlCommand(querydel, strconn);
-                    cmdsend.ExecuteNonQuery();
-                    strconn.Close();
+                    _cmd = new MySqlCommand(querydel, _conn);
+                    _cmd.ExecuteNonQuery();
+                    _conn.Close();
 
                 }
 
@@ -46,14 +54,14 @@ namespace TH8201S
 
                 try
                 {
-                    strconn = new MySqlConnection(connlocalhost);
-                    strconn.Open();
+                    _conn = new MySqlConnection(connlocalhost);
+                    _conn.Open();
                     string query = "select  * from phieutest where BIll_NUMBER = '" + Convert.ToInt32(txtbill.Text) + "'";
-                    dtp = new MySqlDataAdapter(query, connlocalhost);
-                    cmd = new MySqlCommandBuilder(dtp);
+                    _dataAdapter = new MySqlDataAdapter(query, connlocalhost);
+                    _cmdBuilder = new MySqlCommandBuilder(_dataAdapter);
                     DataTable tam1 = new DataTable();
-                    dtp.Fill(tam1);
-                    strconn.Close();
+                    _dataAdapter.Fill(tam1);
+                    _conn.Close();
                     dataGridView1.DataSource = tam1;
                     dataGridView1.Columns[0].HeaderText = "Bill number";
                     dataGridView1.Columns[1].HeaderText = "Time";
@@ -66,15 +74,10 @@ namespace TH8201S
                 {
                     MessageBox.Show("không thể kết nối CSDL!");
                 }
-
-
             }
-
-
-
         }
 
-        private void btn_save_Click(object sender, EventArgs e)
+        private void BtSave_Click(object sender, EventArgs e)
         {
             // export to excell 
             sFDialog.InitialDirectory = "C";
@@ -100,61 +103,64 @@ namespace TH8201S
                     }
                 }
             
-                    excelApp.ActiveWorkbook.SaveCopyAs(sFDialog.FileName.ToString());
-                    excelApp.ActiveWorkbook.Saved = true;
-                    excelApp.Quit();
-                    MessageBox.Show("Export Done");
+                excelApp.ActiveWorkbook.SaveCopyAs(sFDialog.FileName.ToString());
+                excelApp.ActiveWorkbook.Saved = true;
+                excelApp.Quit();
+                MessageBox.Show("Export Done");
             }
-                Cursor.Current = Cursors.Default;
-                                   
+            Cursor.Current = Cursors.Default;                                   
         }
 
-        private void btt_Start_Click(object sender, EventArgs e)
+        private async Task LoadAndFillData()
         {
-            FillChart();
-            try
-            { 
-            strconn = new MySqlConnection(connlocalhost);
-            strconn.Open();
-            string query = "select  * from phieutest where BIll_NUMBER = '" + Convert.ToInt32(txtbill.Text) + "'";
-            dtp = new MySqlDataAdapter(query, connlocalhost);
-            cmd = new MySqlCommandBuilder(dtp);
-            DataTable tam1 = new DataTable();
-            dtp.Fill(tam1);            
-            strconn.Close();
-                txt_Strain_max.Text = string.Format("{0:#,#0.0}", Convert.ToString(tam1.AsEnumerable().Max(row => row["REAL_STRAIN"])));
-                txt_Force_max.Text = string.Format("{0:#,##0.00}", Convert.ToString(tam1.AsEnumerable().Max(row => row["REAL_FORCE"])));
-                dataGridView1.DataSource = tam1;
-            dataGridView1.Columns[0].HeaderText = "Bill number";
-            dataGridView1.Columns[1].HeaderText = "Thời gian";
-            dataGridView1.Columns[2].HeaderText = "Strain";
-            dataGridView1.Columns[3].HeaderText = "Force";
-            dataGridView1.Columns[4].HeaderText = "Stress";
-            dataGridView1.Columns[5].HeaderText = "Elong";
-            }
-            catch
+            BtSearch.Enabled = false;
+            if (int.TryParse(txtbill.Text, out int bill_id))
             {
-                MessageBox.Show("không thể kết nối CSDL!");
+                DataTable tbl = await LoadData(bill_id);
+
+                if (tbl != null)
+                {
+                    txt_Strain_max.Text = string.Format("{0:#,#0.0}", Convert.ToString(tbl.AsEnumerable().Max(row => row["REAL_STRAIN"])));
+                    txt_Force_max.Text = string.Format("{0:#,##0.00}", Convert.ToString(tbl.AsEnumerable().Max(row => row["REAL_FORCE"])));
+                    dataGridView1.DataSource = tbl;
+                    dataGridView1.Columns[0].HeaderText = "Bill number";
+                    dataGridView1.Columns[1].HeaderText = "Thời gian";
+                    dataGridView1.Columns[2].HeaderText = "Strain";
+                    dataGridView1.Columns[3].HeaderText = "Force";
+                    dataGridView1.Columns[4].HeaderText = "Stress";
+                    dataGridView1.Columns[5].HeaderText = "Elong";
+
+                    FillChart(tbl);
+                }
             }
+            BtSearch.Enabled = true;
+        }
+        private async Task<DataTable> LoadData(int bill_id)
+        {
+            DataTable tbl = new DataTable();
+            try
+            {
+                _conn = new MySqlConnection(connlocalhost);
+                _conn.Open();
+                string query = string.Format("SELECT * FROM phieutest WHERE BIll_NUMBER='{0}'", bill_id);
+                _dataAdapter = new MySqlDataAdapter(query, connlocalhost);
+                await _dataAdapter.FillAsync(tbl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể kết nối CSDL!");
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                tbl = null;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+            return tbl;
         }
 
-        public data()
+        private void FillChart(DataTable tbl)
         {
-            InitializeComponent();
-        }
-        void FillChart()
-        {
-
-            // string b = lbl_ID_ODER.Text;
-            strconn = new MySqlConnection(connlocalhost);
-            strconn.Open();
-            string query = "select  * from phieutest where BIll_NUMBER = '" + Convert.ToInt32(txtbill.Text) + "'";
-            dtp = new MySqlDataAdapter(query, connlocalhost);
-            cmd = new MySqlCommandBuilder(dtp);
-            DataTable tam1 = new DataTable();
-            dtp.Fill(tam1);
-            chart_tensile.DataSource = tam1;
-            strconn.Close();
             chart_tensile.ChartAreas["ChartArea1"].AxisX.Minimum = 0;
             chart_tensile.ChartAreas["ChartArea1"].AxisX.Title = "STRAIN(mm)";
             chart_tensile.ChartAreas["ChartArea1"].AxisY.Minimum = 0;
@@ -171,8 +177,9 @@ namespace TH8201S
             chart_tensile.Series[0].Points.Clear();
             chart_tensile.Series["Tensile"].XValueMember = "REAL_STRAIN";
             chart_tensile.Series["Tensile"].YValueMembers = "REAL_FORCE";
+
+            chart_tensile.DataSource = tbl;
             chart_tensile.DataBind();
-            tam1.Clear();
         }
     }
 }

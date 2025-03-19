@@ -1,6 +1,6 @@
 ﻿namespace TH8201S
 {
-    partial class data
+    partial class FrmData
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.sFDialog = new System.Windows.Forms.SaveFileDialog();
             this.chart_tensile = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -39,7 +39,7 @@
             this.btn_save = new System.Windows.Forms.Button();
             this.btt_Delete = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btt_Start = new System.Windows.Forms.Button();
+            this.BtSearch = new System.Windows.Forms.Button();
             this.txt_Force_max = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Strain_max = new System.Windows.Forms.TextBox();
@@ -78,19 +78,19 @@
             // 
             // chart_tensile
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart_tensile.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chart_tensile.ChartAreas.Add(chartArea1);
             this.chart_tensile.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chart_tensile.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.chart_tensile.Legends.Add(legend1);
             this.chart_tensile.Location = new System.Drawing.Point(6, 6);
             this.chart_tensile.Margin = new System.Windows.Forms.Padding(4);
             this.chart_tensile.Name = "chart_tensile";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Tensile";
-            this.chart_tensile.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Tensile";
+            this.chart_tensile.Series.Add(series1);
             this.chart_tensile.Size = new System.Drawing.Size(1044, 527);
             this.chart_tensile.TabIndex = 1;
             this.chart_tensile.Text = "chart1";
@@ -129,7 +129,7 @@
             this.btn_save.TabIndex = 111;
             this.btn_save.Text = "EXPORT EXCEL";
             this.btn_save.UseVisualStyleBackColor = false;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.btn_save.Click += new System.EventHandler(this.BtSave_Click);
             // 
             // btt_Delete
             // 
@@ -141,7 +141,7 @@
             this.btt_Delete.TabIndex = 110;
             this.btt_Delete.Text = "DELETE";
             this.btt_Delete.UseVisualStyleBackColor = false;
-            this.btt_Delete.Click += new System.EventHandler(this.btt_Delete_Click);
+            this.btt_Delete.Click += new System.EventHandler(this.BtDelete_Click);
             // 
             // label3
             // 
@@ -155,17 +155,17 @@
             this.label3.Text = "Bill";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btt_Start
+            // BtSearch
             // 
-            this.btt_Start.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.btt_Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Start.Location = new System.Drawing.Point(6, 50);
-            this.btt_Start.Name = "btt_Start";
-            this.btt_Start.Size = new System.Drawing.Size(175, 59);
-            this.btt_Start.TabIndex = 109;
-            this.btt_Start.Text = "SEARCH";
-            this.btt_Start.UseVisualStyleBackColor = false;
-            this.btt_Start.Click += new System.EventHandler(this.btt_Start_Click);
+            this.BtSearch.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.BtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtSearch.Location = new System.Drawing.Point(6, 50);
+            this.BtSearch.Name = "BtSearch";
+            this.BtSearch.Size = new System.Drawing.Size(175, 59);
+            this.BtSearch.TabIndex = 109;
+            this.BtSearch.Text = "SEARCH";
+            this.BtSearch.UseVisualStyleBackColor = false;
+            this.BtSearch.Click += new System.EventHandler(this.BtStart_Click);
             // 
             // txt_Force_max
             // 
@@ -217,7 +217,7 @@
             this.pnl11.Controls.Add(this.label3);
             this.pnl11.Controls.Add(this.label1);
             this.pnl11.Controls.Add(this.txtbill);
-            this.pnl11.Controls.Add(this.btt_Start);
+            this.pnl11.Controls.Add(this.BtSearch);
             this.pnl11.Controls.Add(this.label2);
             this.pnl11.Controls.Add(this.txt_Force_max);
             this.pnl11.Dock = System.Windows.Forms.DockStyle.Left;
@@ -302,7 +302,7 @@
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Button btt_Delete;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btt_Start;
+        private System.Windows.Forms.Button BtSearch;
         private System.Windows.Forms.TextBox txt_Force_max;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
