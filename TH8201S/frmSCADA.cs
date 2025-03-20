@@ -17,17 +17,13 @@ using OxyPlot.Series;
 using OxyPlot.Axes;
 using OxyPlot.Legends;
 using OxyPlot.Annotations;
+using TH8201S.Db;
 
 namespace TH8201S
 {
     public partial class frmSCADA : Form
     {
         private MySqlConnection _conn;
-        private MySqlCommand cmdsend;
-        //private string connserver = "Server=222.252.4.119;port=1433;Database=th8201s;UId=root;Pwd=Adatek2vn@server3;Pooling=false;Character Set = utf8";
-        //private string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=Adatek2vn@server3;Pooling=false;Character Set = utf8";
-        private string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=manh123;Pooling=false;Character Set = utf8";
-        //DataTable mytable, mytable1, mytable2;
         //==========================WATCHDOG================================
         string Watchdog_value = "0";
         //=====================KEPServerEX CONNECT=====================
@@ -302,20 +298,19 @@ namespace TH8201S
 
         private void BtnRefresh_MouseUp(object sender, MouseEventArgs e)
         {
-            // Trùng Btn_Refresh_Click
-            //WriteItems.SetValue(0, 1);      // RESET GIÁ TRỊ START VỀ 0
-            //PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
-            //WriteItems.SetValue(0, 23);    // RESET GIÁ TRỊ STOP VỀ 0
-            //PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
-            //WriteItems.SetValue(0, 69);     // RESET GIÁ TRỊ ENCODER
-            //PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
-            //WriteItems.SetValue(0, 19);   // RESET GIÁ TRỊ SET ZERO CALIB SACLE
-            //PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
+            WriteItems.SetValue(0, 1);      // RESET GIÁ TRỊ START VỀ 0
+            PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
+            WriteItems.SetValue(0, 23);    // RESET GIÁ TRỊ STOP VỀ 0
+            PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
+            WriteItems.SetValue(0, 69);     // RESET GIÁ TRỊ ENCODER
+            PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
+            WriteItems.SetValue(0, 19);   // RESET GIÁ TRỊ SET ZERO CALIB SACLE
+            PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
 
-            //WriteItems.SetValue(0, 19);   // RESET GIÁ TRỊ SET ZERO CALIB SACLE
-            //PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
-            //WriteItems.SetValue(0, 36);   // RESET GIÁ TRỊ SET ZERO STRAIN 
-            //PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
+            WriteItems.SetValue(0, 19);   // RESET GIÁ TRỊ SET ZERO CALIB SACLE
+            PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
+            WriteItems.SetValue(0, 36);   // RESET GIÁ TRỊ SET ZERO STRAIN 
+            PLC.SyncWrite(tagNumber, ref tagHandles, ref WriteItems, out OPCError);
         }
 
         private void txtbox_chieuday_KeyDown(object sender, KeyEventArgs e)
@@ -434,23 +429,23 @@ namespace TH8201S
             btt_Stop.Visible = false;
             timer_start.Enabled = false;
 
-            DialogResult result = MessageBox.Show("Bấm Yes lưu đơn hàng, bấm No để chạy lại đơn hàng  ", "Lưu dữ liệu đơn hàng", MessageBoxButtons.YesNoCancel);
+            DialogResult result = MessageBox.Show("Bấm Yes lưu đơn hàng, bấm No để chạy lại đơn hàng", "Lưu dữ liệu đơn hàng", MessageBoxButtons.YesNoCancel);
             if (result == DialogResult.Yes)
             {
                 // Lưu dữ liệu từ Bill vào csdl
-                _conn = new MySqlConnection(connlocalhost);
+                _conn = new MySqlConnection(DbBridge.Instance.ConnStr);
                 _conn.Open();
                 foreach (var p in _cur_bill.MeasurePoints)
                 {
                     string query_send = "insert into phieutest(BILL_NUMBER,DATE_TIME,REAL_STRAIN,REAL_FORCE,REAL_STRESS,REAL_ELONG) values" + "(@BILL_NUMBER,@DATE_TIME,@REAL_STRAIN,@REAL_FORCE,@REAL_STRESS,@REAL_ELONG)";
-                    cmdsend = new MySqlCommand(query_send, _conn);
-                    cmdsend.Parameters.AddWithValue("BILL_NUMBER", _cur_bill.Id);
-                    cmdsend.Parameters.AddWithValue("DATE_TIME", p.T.ToString("yyyy-MM-dd HH:mm:ss"));
-                    cmdsend.Parameters.AddWithValue("REAL_STRAIN", p.RealStrain);
-                    cmdsend.Parameters.AddWithValue("REAL_FORCE", p.RealForce);
-                    cmdsend.Parameters.AddWithValue("REAL_STRESS", p.RealStress);
-                    cmdsend.Parameters.AddWithValue("REAL_ELONG", p.RealELong);
-                    cmdsend.ExecuteNonQuery();
+                    var cmd = new MySqlCommand(query_send, _conn);
+                    cmd.Parameters.AddWithValue("BILL_NUMBER", _cur_bill.Id);
+                    cmd.Parameters.AddWithValue("DATE_TIME", p.T.ToString("yyyy-MM-dd HH:mm:ss"));
+                    cmd.Parameters.AddWithValue("REAL_STRAIN", p.RealStrain);
+                    cmd.Parameters.AddWithValue("REAL_FORCE", p.RealForce);
+                    cmd.Parameters.AddWithValue("REAL_STRESS", p.RealStress);
+                    cmd.Parameters.AddWithValue("REAL_ELONG", p.RealELong);
+                    cmd.ExecuteNonQuery();
                 }
                 _conn.Close();
                 _cur_bill.IsSaved = true;
@@ -459,11 +454,11 @@ namespace TH8201S
 
         private void btStart_MouseDown(object sender, MouseEventArgs e)
         {
-            if (cur_spd < 100)
-            {
-                MessageBox.Show("Hãy đặt tốc độ (mm/p) trước khi chạy!", "Chạy tự động");
-                return;
-            }
+            //if (cur_spd < 100)
+            //{
+            //    MessageBox.Show("Hãy đặt tốc độ (mm/p) trước khi chạy!", "Chạy tự động");
+            //    return;
+            //}
 
             txt_Elong_max.Text = "0.00";
             txt_Force_max.Text = "0.00";
@@ -472,7 +467,7 @@ namespace TH8201S
 
             try
             {
-                _conn = new MySqlConnection(connlocalhost);
+                _conn = new MySqlConnection(DbBridge.Instance.ConnStr);
                 _conn.Open();
                 string query = "SELECT MAX(BILL_NUMBER) FROM phieutest";
                 var cmd = new MySqlCommand(query, _conn);
@@ -545,7 +540,7 @@ namespace TH8201S
                     case 10:
                         break;
                     case 11:
-                        _cur_point.RealForce = Math.Round(double.Parse(tagValue) * 9.8, 2);
+                        _cur_point.RealForce = Math.Round(double.Parse(tagValue) * 9.8, 4);
                         txt_Force.Text = string.Format("{0:#,##0.00}", _cur_point.RealForce);
                         break;
                     case 12:
@@ -641,6 +636,12 @@ namespace TH8201S
 
         }
         #endregion
+
+        private void MniSettings_Click(object sender, EventArgs e)
+        {
+            frmSettings frm = new frmSettings();
+            frm.ShowDialog();
+        }
     }
 }
 

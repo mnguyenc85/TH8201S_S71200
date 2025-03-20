@@ -13,6 +13,7 @@ using OxyPlot.Axes;
 using OxyPlot.Annotations;
 using OxyPlot.Legends;
 using TH8201S.Data;
+using TH8201S.Db;
 
 namespace TH8201S
 {
@@ -22,10 +23,6 @@ namespace TH8201S
         private MySqlCommandBuilder _cmdBuilder;
         private MySqlCommand _cmd;
         private MySqlDataAdapter _dataAdapter;
-        string connserver = "Server=222.252.4.119;port=1433;Database=th8201s;UId=root;Pwd=Adatek2vn@server3;Pooling=false;Character Set=utf8";
-        //string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=Adatek2vn@server3; Pooling=false;Character Set=utf8";
-        string connlocalhost = "Server=localhost;Database=th8201s;UId=root;Pwd=manh123;Pooling=false;Character Set=utf8";
-
         // Đồ thị OxyPlot
         private PlotModel _plotModel;
         private LineSeries _lineSeries;
@@ -56,7 +53,7 @@ namespace TH8201S
             {
                 try
                 {
-                    _conn = new MySqlConnection(connlocalhost);
+                    _conn = new MySqlConnection(DbBridge.Instance.ConnStr);
                     _conn.Open();
                     string querydel = "delete from phieutest where BILL_NUMBER = '" + (int)numBillId.Value + "'";
                     _cmd = new MySqlCommand(querydel, _conn);
@@ -72,14 +69,15 @@ namespace TH8201S
 
                 try
                 {
-                    _conn = new MySqlConnection(connlocalhost);
-                    _conn.Open();
                     string query = "select  * from phieutest where BIll_NUMBER = '" + (int)numBillId.Value + "'";
-                    _dataAdapter = new MySqlDataAdapter(query, connlocalhost);
-                    _cmdBuilder = new MySqlCommandBuilder(_dataAdapter);
+
+                    _conn = new MySqlConnection(DbBridge.Instance.ConnStr);
+                    _conn.Open();
+                    _dataAdapter = new MySqlDataAdapter(query, _conn);
                     DataTable tam1 = new DataTable();
                     _dataAdapter.Fill(tam1);
                     _conn.Close();
+
                     dataGridView1.DataSource = tam1;
                     dataGridView1.Columns[0].HeaderText = "Bill number";
                     dataGridView1.Columns[1].HeaderText = "Time";
@@ -171,10 +169,10 @@ namespace TH8201S
             DataTable tbl = new DataTable();
             try
             {
-                _conn = new MySqlConnection(connlocalhost);
-                _conn.Open();
                 string query = string.Format("SELECT * FROM phieutest WHERE BIll_NUMBER='{0}' ORDER BY DATE_TIME", bill_id);
-                _dataAdapter = new MySqlDataAdapter(query, connlocalhost);
+                _conn = new MySqlConnection(DbBridge.Instance.ConnStr);
+                _conn.Open();
+                _dataAdapter = new MySqlDataAdapter(query, _conn);
                 await _dataAdapter.FillAsync(tbl);
             }
             catch (Exception ex)
@@ -196,7 +194,7 @@ namespace TH8201S
 
             try
             {
-                _conn = new MySqlConnection(connlocalhost);
+                _conn = new MySqlConnection(DbBridge.Instance.ConnStr);
                 _conn.Open();
                 string query = "SELECT MAX(BILL_NUMBER) FROM phieutest";
                 _cmd = new MySqlCommand(query, _conn);
@@ -297,7 +295,7 @@ namespace TH8201S
 
             _plotModel.InvalidatePlot(true);
 
-            txt_Strain_max.Text = string.Format("{0:#,#0.0}", tensileFeatures.StrainMax);
+            txt_Strain_max.Text = string.Format("{0:#,#0.0}", tensileFeatures.ForceMaxStrain);
             txt_Force_max.Text = string.Format("{0:#,##0.00}", tensileFeatures.ForceMax);
         }
 

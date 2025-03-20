@@ -62,6 +62,7 @@
             this.txt_Strain_min = new System.Windows.Forms.TextBox();
             this.txt_Stress_max = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.pnl123 = new System.Windows.Forms.Panel();
             this.pnl121 = new TH8201S.UserControls.MyCustomPanel();
             this.txtbox_chieurong = new System.Windows.Forms.TextBox();
             this.txt_mode = new System.Windows.Forms.TextBox();
@@ -92,7 +93,6 @@
             this.slblTime2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.slblCount = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pnl123 = new System.Windows.Forms.Panel();
             this.mnuMain.SuspendLayout();
             this.pnl1.SuspendLayout();
             this.pnl13.SuspendLayout();
@@ -114,30 +114,31 @@
             this.càiĐặtToolStripMenuItem});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.mnuMain.Size = new System.Drawing.Size(1582, 28);
+            this.mnuMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.mnuMain.Size = new System.Drawing.Size(1188, 24);
             this.mnuMain.TabIndex = 0;
             this.mnuMain.Text = "menuStrip1";
             // 
             // hiệuChỉnhCânToolStripMenuItem
             // 
             this.hiệuChỉnhCânToolStripMenuItem.Name = "hiệuChỉnhCânToolStripMenuItem";
-            this.hiệuChỉnhCânToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.hiệuChỉnhCânToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.hiệuChỉnhCânToolStripMenuItem.Text = "Calib";
             this.hiệuChỉnhCânToolStripMenuItem.Click += new System.EventHandler(this.MniHieuChinhCan_Click);
             // 
             // mniThongKe
             // 
             this.mniThongKe.Name = "mniThongKe";
-            this.mniThongKe.Size = new System.Drawing.Size(55, 24);
+            this.mniThongKe.Size = new System.Drawing.Size(43, 20);
             this.mniThongKe.Text = "Data";
             this.mniThongKe.Click += new System.EventHandler(this.mniThongKe_Click);
             // 
             // càiĐặtToolStripMenuItem
             // 
             this.càiĐặtToolStripMenuItem.Name = "càiĐặtToolStripMenuItem";
-            this.càiĐặtToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.càiĐặtToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.càiĐặtToolStripMenuItem.Text = "Setting";
+            this.càiĐặtToolStripMenuItem.Click += new System.EventHandler(this.MniSettings_Click);
             // 
             // Timer_Watchdog
             // 
@@ -147,7 +148,7 @@
             // 
             // timer_start
             // 
-            this.timer_start.Interval = 25;
+            this.timer_start.Interval = 10;
             this.timer_start.Tick += new System.EventHandler(this.timer_start_Tick);
             // 
             // pnl1
@@ -156,22 +157,20 @@
             this.pnl1.Controls.Add(this.pnl12);
             this.pnl1.Controls.Add(this.pnl11);
             this.pnl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl1.Location = new System.Drawing.Point(0, 28);
-            this.pnl1.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl1.Location = new System.Drawing.Point(0, 24);
             this.pnl1.Name = "pnl1";
-            this.pnl1.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.pnl1.Size = new System.Drawing.Size(1582, 839);
+            this.pnl1.Padding = new System.Windows.Forms.Padding(6);
+            this.pnl1.Size = new System.Drawing.Size(1188, 675);
             this.pnl1.TabIndex = 110;
             // 
             // pnl13
             // 
             this.pnl13.Controls.Add(this.pnl131);
             this.pnl13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl13.Location = new System.Drawing.Point(199, 155);
-            this.pnl13.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl13.Location = new System.Drawing.Point(149, 126);
             this.pnl13.Name = "pnl13";
-            this.pnl13.Padding = new System.Windows.Forms.Padding(8, 7, 0, 0);
-            this.pnl13.Size = new System.Drawing.Size(1375, 677);
+            this.pnl13.Padding = new System.Windows.Forms.Padding(6, 6, 0, 0);
+            this.pnl13.Size = new System.Drawing.Size(1033, 543);
             this.pnl13.TabIndex = 111;
             // 
             // pnl131
@@ -179,21 +178,21 @@
             this.pnl131.Controls.Add(this.plotTensile);
             this.pnl131.Controls.Add(this.pnlPlotControls);
             this.pnl131.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl131.Location = new System.Drawing.Point(8, 7);
-            this.pnl131.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl131.Location = new System.Drawing.Point(6, 6);
             this.pnl131.Name = "pnl131";
-            this.pnl131.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.pnl131.Size = new System.Drawing.Size(1367, 670);
+            this.pnl131.Padding = new System.Windows.Forms.Padding(6);
+            this.pnl131.Size = new System.Drawing.Size(1027, 537);
             this.pnl131.TabIndex = 0;
             // 
             // plotTensile
             // 
             this.plotTensile.BackColor = System.Drawing.Color.White;
             this.plotTensile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plotTensile.Location = new System.Drawing.Point(8, 7);
+            this.plotTensile.Location = new System.Drawing.Point(6, 6);
+            this.plotTensile.Margin = new System.Windows.Forms.Padding(2);
             this.plotTensile.Name = "plotTensile";
             this.plotTensile.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotTensile.Size = new System.Drawing.Size(1351, 618);
+            this.plotTensile.Size = new System.Drawing.Size(1015, 494);
             this.plotTensile.TabIndex = 0;
             this.plotTensile.Text = "plotView1";
             this.plotTensile.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
@@ -205,17 +204,19 @@
             this.pnlPlotControls.Controls.Add(this.btPlotReset);
             this.pnlPlotControls.Controls.Add(this.chkZoomAll);
             this.pnlPlotControls.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlPlotControls.Location = new System.Drawing.Point(8, 625);
+            this.pnlPlotControls.Location = new System.Drawing.Point(6, 500);
+            this.pnlPlotControls.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPlotControls.Name = "pnlPlotControls";
-            this.pnlPlotControls.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlPlotControls.Size = new System.Drawing.Size(1351, 38);
+            this.pnlPlotControls.Padding = new System.Windows.Forms.Padding(2);
+            this.pnlPlotControls.Size = new System.Drawing.Size(1015, 31);
             this.pnlPlotControls.TabIndex = 1;
             // 
             // btPlotReset
             // 
-            this.btPlotReset.Location = new System.Drawing.Point(68, 6);
+            this.btPlotReset.Location = new System.Drawing.Point(51, 5);
+            this.btPlotReset.Margin = new System.Windows.Forms.Padding(2);
             this.btPlotReset.Name = "btPlotReset";
-            this.btPlotReset.Size = new System.Drawing.Size(63, 26);
+            this.btPlotReset.Size = new System.Drawing.Size(47, 21);
             this.btPlotReset.TabIndex = 1;
             this.btPlotReset.Text = "Reset";
             this.btPlotReset.UseVisualStyleBackColor = true;
@@ -226,9 +227,10 @@
             this.chkZoomAll.AutoSize = true;
             this.chkZoomAll.Checked = true;
             this.chkZoomAll.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkZoomAll.Location = new System.Drawing.Point(6, 10);
+            this.chkZoomAll.Location = new System.Drawing.Point(4, 8);
+            this.chkZoomAll.Margin = new System.Windows.Forms.Padding(2);
             this.chkZoomAll.Name = "chkZoomAll";
-            this.chkZoomAll.Size = new System.Drawing.Size(56, 20);
+            this.chkZoomAll.Size = new System.Drawing.Size(48, 17);
             this.chkZoomAll.TabIndex = 0;
             this.chkZoomAll.Text = "Auto";
             this.chkZoomAll.UseVisualStyleBackColor = true;
@@ -240,11 +242,10 @@
             this.pnl12.Controls.Add(this.pnl123);
             this.pnl12.Controls.Add(this.pnl121);
             this.pnl12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnl12.Location = new System.Drawing.Point(199, 7);
-            this.pnl12.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl12.Location = new System.Drawing.Point(149, 6);
             this.pnl12.Name = "pnl12";
-            this.pnl12.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.pnl12.Size = new System.Drawing.Size(1375, 148);
+            this.pnl12.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.pnl12.Size = new System.Drawing.Size(1033, 120);
             this.pnl12.TabIndex = 110;
             // 
             // pnl122
@@ -267,22 +268,20 @@
             this.pnl122.Controls.Add(this.txt_Stress_max);
             this.pnl122.Controls.Add(this.label9);
             this.pnl122.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl122.Location = new System.Drawing.Point(8, 0);
-            this.pnl122.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl122.Location = new System.Drawing.Point(6, 0);
             this.pnl122.Name = "pnl122";
-            this.pnl122.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.pnl122.Size = new System.Drawing.Size(1016, 148);
+            this.pnl122.Padding = new System.Windows.Forms.Padding(6);
+            this.pnl122.Size = new System.Drawing.Size(764, 120);
             this.pnl122.TabIndex = 111;
             // 
             // txt_Elong_min
             // 
             this.txt_Elong_min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txt_Elong_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Elong_min.Location = new System.Drawing.Point(888, 110);
-            this.txt_Elong_min.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Elong_min.Location = new System.Drawing.Point(666, 89);
             this.txt_Elong_min.Multiline = true;
             this.txt_Elong_min.Name = "txt_Elong_min";
-            this.txt_Elong_min.Size = new System.Drawing.Size(79, 29);
+            this.txt_Elong_min.Size = new System.Drawing.Size(60, 24);
             this.txt_Elong_min.TabIndex = 12;
             this.txt_Elong_min.Text = "0";
             this.txt_Elong_min.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -291,11 +290,10 @@
             // 
             this.txt_Force_min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txt_Force_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Force_min.Location = new System.Drawing.Point(888, 41);
-            this.txt_Force_min.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Force_min.Location = new System.Drawing.Point(666, 33);
             this.txt_Force_min.Multiline = true;
             this.txt_Force_min.Name = "txt_Force_min";
-            this.txt_Force_min.Size = new System.Drawing.Size(79, 29);
+            this.txt_Force_min.Size = new System.Drawing.Size(60, 24);
             this.txt_Force_min.TabIndex = 12;
             this.txt_Force_min.Text = "0";
             this.txt_Force_min.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -304,11 +302,10 @@
             // 
             this.txt_Elong_max.BackColor = System.Drawing.Color.Red;
             this.txt_Elong_max.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Elong_max.Location = new System.Drawing.Point(888, 81);
-            this.txt_Elong_max.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Elong_max.Location = new System.Drawing.Point(666, 66);
             this.txt_Elong_max.Multiline = true;
             this.txt_Elong_max.Name = "txt_Elong_max";
-            this.txt_Elong_max.Size = new System.Drawing.Size(79, 29);
+            this.txt_Elong_max.Size = new System.Drawing.Size(60, 24);
             this.txt_Elong_max.TabIndex = 11;
             this.txt_Elong_max.Text = "0";
             this.txt_Elong_max.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -319,10 +316,9 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Navy;
-            this.label8.Location = new System.Drawing.Point(540, 30);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(405, 24);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(156, 31);
+            this.label8.Size = new System.Drawing.Size(122, 25);
             this.label8.TabIndex = 13;
             this.label8.Text = "FORCE(N)";
             // 
@@ -332,22 +328,21 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Navy;
-            this.label7.Location = new System.Drawing.Point(12, 100);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(9, 81);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(207, 31);
+            this.label7.Size = new System.Drawing.Size(165, 25);
             this.label7.TabIndex = 8;
             this.label7.Text = "STRESS(MPa)";
             // 
             // txt_Stress
             // 
             this.txt_Stress.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Stress.Location = new System.Drawing.Point(244, 81);
-            this.txt_Stress.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.txt_Stress.Location = new System.Drawing.Point(183, 66);
+            this.txt_Stress.Margin = new System.Windows.Forms.Padding(6);
             this.txt_Stress.Multiline = true;
             this.txt_Stress.Name = "txt_Stress";
             this.txt_Stress.ReadOnly = true;
-            this.txt_Stress.Size = new System.Drawing.Size(173, 58);
+            this.txt_Stress.Size = new System.Drawing.Size(131, 48);
             this.txt_Stress.TabIndex = 7;
             this.txt_Stress.Text = "0.0";
             this.txt_Stress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -358,10 +353,9 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Navy;
-            this.label6.Location = new System.Drawing.Point(12, 30);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(9, 24);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 31);
+            this.label6.Size = new System.Drawing.Size(94, 25);
             this.label6.TabIndex = 1;
             this.label6.Text = "STRAIN";
             // 
@@ -369,11 +363,10 @@
             // 
             this.txt_Force_max.BackColor = System.Drawing.Color.Red;
             this.txt_Force_max.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Force_max.Location = new System.Drawing.Point(888, 11);
-            this.txt_Force_max.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Force_max.Location = new System.Drawing.Point(666, 9);
             this.txt_Force_max.Multiline = true;
             this.txt_Force_max.Name = "txt_Force_max";
-            this.txt_Force_max.Size = new System.Drawing.Size(79, 29);
+            this.txt_Force_max.Size = new System.Drawing.Size(60, 24);
             this.txt_Force_max.TabIndex = 11;
             this.txt_Force_max.Text = "0";
             this.txt_Force_max.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -381,12 +374,11 @@
             // txt_Elong
             // 
             this.txt_Elong.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Elong.Location = new System.Drawing.Point(707, 81);
-            this.txt_Elong.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Elong.Location = new System.Drawing.Point(530, 66);
             this.txt_Elong.Multiline = true;
             this.txt_Elong.Name = "txt_Elong";
             this.txt_Elong.ReadOnly = true;
-            this.txt_Elong.Size = new System.Drawing.Size(173, 58);
+            this.txt_Elong.Size = new System.Drawing.Size(131, 48);
             this.txt_Elong.TabIndex = 3;
             this.txt_Elong.Text = "0.0";
             this.txt_Elong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -395,12 +387,11 @@
             // tbx_strain
             // 
             this.tbx_strain.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_strain.Location = new System.Drawing.Point(244, 11);
-            this.tbx_strain.Margin = new System.Windows.Forms.Padding(4);
+            this.tbx_strain.Location = new System.Drawing.Point(183, 9);
             this.tbx_strain.Multiline = true;
             this.tbx_strain.Name = "tbx_strain";
             this.tbx_strain.ReadOnly = true;
-            this.tbx_strain.Size = new System.Drawing.Size(173, 58);
+            this.tbx_strain.Size = new System.Drawing.Size(131, 48);
             this.tbx_strain.TabIndex = 0;
             this.tbx_strain.Text = "0.0";
             this.tbx_strain.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -408,13 +399,12 @@
             // txt_Strain
             // 
             this.txt_Strain.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Strain.Location = new System.Drawing.Point(244, 11);
-            this.txt_Strain.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Strain.Location = new System.Drawing.Point(183, 9);
             this.txt_Strain.Multiline = true;
             this.txt_Strain.Name = "txt_Strain";
             this.txt_Strain.ReadOnly = true;
             this.txt_Strain.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txt_Strain.Size = new System.Drawing.Size(173, 58);
+            this.txt_Strain.Size = new System.Drawing.Size(131, 48);
             this.txt_Strain.TabIndex = 2;
             this.txt_Strain.Text = "0.0";
             this.txt_Strain.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -423,11 +413,10 @@
             // 
             this.txt_Stress_min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txt_Stress_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Stress_min.Location = new System.Drawing.Point(427, 111);
-            this.txt_Stress_min.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Stress_min.Location = new System.Drawing.Point(320, 90);
             this.txt_Stress_min.Multiline = true;
             this.txt_Stress_min.Name = "txt_Stress_min";
-            this.txt_Stress_min.Size = new System.Drawing.Size(79, 29);
+            this.txt_Stress_min.Size = new System.Drawing.Size(60, 24);
             this.txt_Stress_min.TabIndex = 12;
             this.txt_Stress_min.Text = "0";
             this.txt_Stress_min.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -436,11 +425,10 @@
             // 
             this.txt_Strain_max.BackColor = System.Drawing.Color.Red;
             this.txt_Strain_max.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Strain_max.Location = new System.Drawing.Point(427, 11);
-            this.txt_Strain_max.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Strain_max.Location = new System.Drawing.Point(320, 9);
             this.txt_Strain_max.Multiline = true;
             this.txt_Strain_max.Name = "txt_Strain_max";
-            this.txt_Strain_max.Size = new System.Drawing.Size(79, 29);
+            this.txt_Strain_max.Size = new System.Drawing.Size(60, 24);
             this.txt_Strain_max.TabIndex = 9;
             this.txt_Strain_max.Text = "0";
             this.txt_Strain_max.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -448,12 +436,12 @@
             // txt_Force
             // 
             this.txt_Force.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Force.Location = new System.Drawing.Point(708, 11);
-            this.txt_Force.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.txt_Force.Location = new System.Drawing.Point(531, 9);
+            this.txt_Force.Margin = new System.Windows.Forms.Padding(6);
             this.txt_Force.Multiline = true;
             this.txt_Force.Name = "txt_Force";
             this.txt_Force.ReadOnly = true;
-            this.txt_Force.Size = new System.Drawing.Size(173, 58);
+            this.txt_Force.Size = new System.Drawing.Size(131, 48);
             this.txt_Force.TabIndex = 5;
             this.txt_Force.Text = "0.0";
             this.txt_Force.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -462,11 +450,10 @@
             // 
             this.txt_Strain_min.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txt_Strain_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Strain_min.Location = new System.Drawing.Point(427, 41);
-            this.txt_Strain_min.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Strain_min.Location = new System.Drawing.Point(320, 33);
             this.txt_Strain_min.Multiline = true;
             this.txt_Strain_min.Name = "txt_Strain_min";
-            this.txt_Strain_min.Size = new System.Drawing.Size(79, 29);
+            this.txt_Strain_min.Size = new System.Drawing.Size(60, 24);
             this.txt_Strain_min.TabIndex = 10;
             this.txt_Strain_min.Text = "0";
             this.txt_Strain_min.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -475,11 +462,10 @@
             // 
             this.txt_Stress_max.BackColor = System.Drawing.Color.Red;
             this.txt_Stress_max.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Stress_max.Location = new System.Drawing.Point(427, 81);
-            this.txt_Stress_max.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Stress_max.Location = new System.Drawing.Point(320, 66);
             this.txt_Stress_max.Multiline = true;
             this.txt_Stress_max.Name = "txt_Stress_max";
-            this.txt_Stress_max.Size = new System.Drawing.Size(79, 29);
+            this.txt_Stress_max.Size = new System.Drawing.Size(60, 24);
             this.txt_Stress_max.TabIndex = 11;
             this.txt_Stress_max.Text = "0";
             this.txt_Stress_max.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -490,12 +476,20 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Navy;
-            this.label9.Location = new System.Drawing.Point(540, 100);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(405, 81);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(159, 31);
+            this.label9.Size = new System.Drawing.Size(126, 25);
             this.label9.TabIndex = 14;
             this.label9.Text = "ELONG(%)";
+            // 
+            // pnl123
+            // 
+            this.pnl123.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl123.Location = new System.Drawing.Point(770, 0);
+            this.pnl123.Margin = new System.Windows.Forms.Padding(2);
+            this.pnl123.Name = "pnl123";
+            this.pnl123.Size = new System.Drawing.Size(4, 120);
+            this.pnl123.TabIndex = 112;
             // 
             // pnl121
             // 
@@ -511,22 +505,20 @@
             this.pnl121.Controls.Add(this.label1);
             this.pnl121.Controls.Add(this.label5);
             this.pnl121.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl121.Location = new System.Drawing.Point(1030, 0);
-            this.pnl121.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl121.Location = new System.Drawing.Point(774, 0);
             this.pnl121.Name = "pnl121";
-            this.pnl121.Padding = new System.Windows.Forms.Padding(4);
-            this.pnl121.Size = new System.Drawing.Size(345, 148);
+            this.pnl121.Padding = new System.Windows.Forms.Padding(3);
+            this.pnl121.Size = new System.Drawing.Size(259, 120);
             this.pnl121.TabIndex = 0;
             // 
             // txtbox_chieurong
             // 
             this.txtbox_chieurong.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbox_chieurong.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbox_chieurong.Location = new System.Drawing.Point(139, 114);
-            this.txtbox_chieurong.Margin = new System.Windows.Forms.Padding(4);
+            this.txtbox_chieurong.Location = new System.Drawing.Point(104, 93);
             this.txtbox_chieurong.Multiline = true;
             this.txtbox_chieurong.Name = "txtbox_chieurong";
-            this.txtbox_chieurong.Size = new System.Drawing.Size(83, 25);
+            this.txtbox_chieurong.Size = new System.Drawing.Size(62, 20);
             this.txtbox_chieurong.TabIndex = 120;
             this.txtbox_chieurong.Text = "0.0";
             this.txtbox_chieurong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -537,12 +529,11 @@
             this.txt_mode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.txt_mode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_mode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_mode.Location = new System.Drawing.Point(95, 11);
-            this.txt_mode.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_mode.Location = new System.Drawing.Point(71, 9);
             this.txt_mode.Multiline = true;
             this.txt_mode.Name = "txt_mode";
             this.txt_mode.ReadOnly = true;
-            this.txt_mode.Size = new System.Drawing.Size(60, 30);
+            this.txt_mode.Size = new System.Drawing.Size(45, 24);
             this.txt_mode.TabIndex = 97;
             this.txt_mode.Text = "0.0";
             this.txt_mode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -551,11 +542,10 @@
             // 
             this.txtbox_chieuday.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbox_chieuday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbox_chieuday.Location = new System.Drawing.Point(139, 80);
-            this.txtbox_chieuday.Margin = new System.Windows.Forms.Padding(4);
+            this.txtbox_chieuday.Location = new System.Drawing.Point(104, 65);
             this.txtbox_chieuday.Multiline = true;
             this.txtbox_chieuday.Name = "txtbox_chieuday";
-            this.txtbox_chieuday.Size = new System.Drawing.Size(83, 25);
+            this.txtbox_chieuday.Size = new System.Drawing.Size(62, 20);
             this.txtbox_chieuday.TabIndex = 119;
             this.txtbox_chieuday.Text = "0.0";
             this.txtbox_chieuday.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -565,10 +555,9 @@
             // 
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(8, 14);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Location = new System.Drawing.Point(6, 11);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(104, 28);
+            this.label23.Size = new System.Drawing.Size(78, 23);
             this.label23.TabIndex = 94;
             this.label23.Text = "Chế độ :";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -577,10 +566,9 @@
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(163, 14);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(122, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 28);
+            this.label3.Size = new System.Drawing.Size(31, 23);
             this.label3.TabIndex = 116;
             this.label3.Text = "Bill number:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -589,10 +577,9 @@
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 79);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(6, 64);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 28);
+            this.label4.Size = new System.Drawing.Size(109, 23);
             this.label4.TabIndex = 117;
             this.label4.Text = "Chiều dầy :";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -600,11 +587,10 @@
             // txtBill
             // 
             this.txtBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBill.Location = new System.Drawing.Point(212, 7);
-            this.txtBill.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBill.Location = new System.Drawing.Point(159, 6);
             this.txtBill.Multiline = true;
             this.txtBill.Name = "txtBill";
-            this.txtBill.Size = new System.Drawing.Size(121, 32);
+            this.txtBill.Size = new System.Drawing.Size(92, 27);
             this.txtBill.TabIndex = 115;
             this.txtBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -612,10 +598,9 @@
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(183, 44);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(137, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 28);
+            this.label2.Size = new System.Drawing.Size(68, 23);
             this.label2.TabIndex = 114;
             this.label2.Text = "mm/p";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -633,10 +618,9 @@
             "350",
             "450",
             "500"});
-            this.cboAutoSpeed.Location = new System.Drawing.Point(95, 46);
-            this.cboAutoSpeed.Margin = new System.Windows.Forms.Padding(4);
+            this.cboAutoSpeed.Location = new System.Drawing.Point(71, 37);
             this.cboAutoSpeed.Name = "cboAutoSpeed";
-            this.cboAutoSpeed.Size = new System.Drawing.Size(81, 28);
+            this.cboAutoSpeed.Size = new System.Drawing.Size(62, 24);
             this.cboAutoSpeed.TabIndex = 113;
             this.cboAutoSpeed.SelectedValueChanged += new System.EventHandler(this.cboSpeed_SelectedValueChanged);
             // 
@@ -644,10 +628,9 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 44);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(6, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 28);
+            this.label1.Size = new System.Drawing.Size(78, 23);
             this.label1.TabIndex = 112;
             this.label1.Text = "Tốc độ :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -656,10 +639,9 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 113);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(7, 92);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(145, 28);
+            this.label5.Size = new System.Drawing.Size(109, 23);
             this.label5.TabIndex = 118;
             this.label5.Text = "Chiều rộng :";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -677,21 +659,19 @@
             this.pnl11.Controls.Add(this.btt_Stop);
             this.pnl11.Controls.Add(this.btt_Fastdown);
             this.pnl11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnl11.Location = new System.Drawing.Point(8, 7);
-            this.pnl11.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl11.Location = new System.Drawing.Point(6, 6);
             this.pnl11.Name = "pnl11";
-            this.pnl11.Padding = new System.Windows.Forms.Padding(4);
-            this.pnl11.Size = new System.Drawing.Size(191, 825);
+            this.pnl11.Padding = new System.Windows.Forms.Padding(3);
+            this.pnl11.Size = new System.Drawing.Size(143, 663);
             this.pnl11.TabIndex = 109;
             // 
             // btt_Start
             // 
             this.btt_Start.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btt_Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Start.Location = new System.Drawing.Point(8, 7);
-            this.btt_Start.Margin = new System.Windows.Forms.Padding(4);
+            this.btt_Start.Location = new System.Drawing.Point(6, 6);
             this.btt_Start.Name = "btt_Start";
-            this.btt_Start.Size = new System.Drawing.Size(175, 59);
+            this.btt_Start.Size = new System.Drawing.Size(131, 48);
             this.btt_Start.TabIndex = 1;
             this.btt_Start.Text = "START";
             this.btt_Start.UseVisualStyleBackColor = false;
@@ -702,10 +682,9 @@
             // 
             this.BtnRefresh.BackColor = System.Drawing.Color.MediumTurquoise;
             this.BtnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnRefresh.Location = new System.Drawing.Point(9, 140);
-            this.BtnRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnRefresh.Location = new System.Drawing.Point(7, 114);
             this.BtnRefresh.Name = "BtnRefresh";
-            this.BtnRefresh.Size = new System.Drawing.Size(175, 59);
+            this.BtnRefresh.Size = new System.Drawing.Size(131, 48);
             this.BtnRefresh.TabIndex = 108;
             this.BtnRefresh.Text = "REFESH";
             this.BtnRefresh.UseVisualStyleBackColor = false;
@@ -719,10 +698,10 @@
             this.cbx_man_auto.Items.AddRange(new object[] {
             "AUTO",
             "MANUAL"});
-            this.cbx_man_auto.Location = new System.Drawing.Point(9, 642);
-            this.cbx_man_auto.Margin = new System.Windows.Forms.Padding(4, 11, 4, 4);
+            this.cbx_man_auto.Location = new System.Drawing.Point(7, 522);
+            this.cbx_man_auto.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
             this.cbx_man_auto.Name = "cbx_man_auto";
-            this.cbx_man_auto.Size = new System.Drawing.Size(173, 37);
+            this.cbx_man_auto.Size = new System.Drawing.Size(131, 32);
             this.cbx_man_auto.TabIndex = 1;
             this.cbx_man_auto.SelectedValueChanged += new System.EventHandler(this.cbx_man_auto_SelectedValueChanged);
             // 
@@ -730,10 +709,10 @@
             // 
             this.btt_Setzero.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btt_Setzero.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Setzero.Location = new System.Drawing.Point(8, 569);
-            this.btt_Setzero.Margin = new System.Windows.Forms.Padding(4, 11, 4, 4);
+            this.btt_Setzero.Location = new System.Drawing.Point(6, 462);
+            this.btt_Setzero.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
             this.btt_Setzero.Name = "btt_Setzero";
-            this.btt_Setzero.Size = new System.Drawing.Size(175, 59);
+            this.btt_Setzero.Size = new System.Drawing.Size(131, 48);
             this.btt_Setzero.TabIndex = 19;
             this.btt_Setzero.Text = "SET ZERO";
             this.btt_Setzero.UseVisualStyleBackColor = false;
@@ -745,10 +724,10 @@
             // 
             this.btt_Return.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btt_Return.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Return.Location = new System.Drawing.Point(9, 214);
-            this.btt_Return.Margin = new System.Windows.Forms.Padding(4, 11, 4, 4);
+            this.btt_Return.Location = new System.Drawing.Point(7, 174);
+            this.btt_Return.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
             this.btt_Return.Name = "btt_Return";
-            this.btt_Return.Size = new System.Drawing.Size(175, 59);
+            this.btt_Return.Size = new System.Drawing.Size(131, 48);
             this.btt_Return.TabIndex = 18;
             this.btt_Return.Text = "RETURN";
             this.btt_Return.UseVisualStyleBackColor = false;
@@ -759,10 +738,9 @@
             // 
             this.btt_Slowdown.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btt_Slowdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Slowdown.Location = new System.Drawing.Point(9, 495);
-            this.btt_Slowdown.Margin = new System.Windows.Forms.Padding(4);
+            this.btt_Slowdown.Location = new System.Drawing.Point(7, 402);
             this.btt_Slowdown.Name = "btt_Slowdown";
-            this.btt_Slowdown.Size = new System.Drawing.Size(175, 59);
+            this.btt_Slowdown.Size = new System.Drawing.Size(131, 48);
             this.btt_Slowdown.TabIndex = 17;
             this.btt_Slowdown.Text = "SLOW DOWN";
             this.btt_Slowdown.UseVisualStyleBackColor = false;
@@ -773,9 +751,10 @@
             // 
             this.btt_Slowup.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btt_Slowup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Slowup.Location = new System.Drawing.Point(9, 354);
+            this.btt_Slowup.Location = new System.Drawing.Point(7, 288);
+            this.btt_Slowup.Margin = new System.Windows.Forms.Padding(2);
             this.btt_Slowup.Name = "btt_Slowup";
-            this.btt_Slowup.Size = new System.Drawing.Size(175, 59);
+            this.btt_Slowup.Size = new System.Drawing.Size(131, 48);
             this.btt_Slowup.TabIndex = 16;
             this.btt_Slowup.Text = "SLOW UP";
             this.btt_Slowup.UseVisualStyleBackColor = false;
@@ -786,10 +765,10 @@
             // 
             this.btt_Fastup.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btt_Fastup.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Fastup.Location = new System.Drawing.Point(8, 288);
-            this.btt_Fastup.Margin = new System.Windows.Forms.Padding(4, 11, 4, 4);
+            this.btt_Fastup.Location = new System.Drawing.Point(6, 234);
+            this.btt_Fastup.Margin = new System.Windows.Forms.Padding(3, 9, 3, 3);
             this.btt_Fastup.Name = "btt_Fastup";
-            this.btt_Fastup.Size = new System.Drawing.Size(175, 59);
+            this.btt_Fastup.Size = new System.Drawing.Size(131, 48);
             this.btt_Fastup.TabIndex = 15;
             this.btt_Fastup.Text = "FAST UP";
             this.btt_Fastup.UseVisualStyleBackColor = false;
@@ -800,10 +779,9 @@
             // 
             this.btt_Stop.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btt_Stop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Stop.Location = new System.Drawing.Point(9, 74);
-            this.btt_Stop.Margin = new System.Windows.Forms.Padding(4);
+            this.btt_Stop.Location = new System.Drawing.Point(7, 60);
             this.btt_Stop.Name = "btt_Stop";
-            this.btt_Stop.Size = new System.Drawing.Size(175, 59);
+            this.btt_Stop.Size = new System.Drawing.Size(131, 48);
             this.btt_Stop.TabIndex = 13;
             this.btt_Stop.Text = "STOP";
             this.btt_Stop.UseVisualStyleBackColor = false;
@@ -815,10 +793,9 @@
             // 
             this.btt_Fastdown.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btt_Fastdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btt_Fastdown.Location = new System.Drawing.Point(9, 428);
-            this.btt_Fastdown.Margin = new System.Windows.Forms.Padding(4);
+            this.btt_Fastdown.Location = new System.Drawing.Point(7, 348);
             this.btt_Fastdown.Name = "btt_Fastdown";
-            this.btt_Fastdown.Size = new System.Drawing.Size(175, 59);
+            this.btt_Fastdown.Size = new System.Drawing.Size(131, 48);
             this.btt_Fastdown.TabIndex = 14;
             this.btt_Fastdown.Text = "FAST DOWN";
             this.btt_Fastdown.UseVisualStyleBackColor = false;
@@ -835,24 +812,23 @@
             this.slblTime2,
             this.toolStripStatusLabel3,
             this.slblCount});
-            this.statusMain.Location = new System.Drawing.Point(0, 867);
+            this.statusMain.Location = new System.Drawing.Point(0, 699);
             this.statusMain.Name = "statusMain";
-            this.statusMain.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusMain.Size = new System.Drawing.Size(1582, 30);
+            this.statusMain.Size = new System.Drawing.Size(1188, 30);
             this.statusMain.TabIndex = 111;
             this.statusMain.Text = "statusMain";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(106, 24);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(88, 25);
             this.toolStripStatusLabel1.Text = "PLC Scan Cycle";
             // 
             // slblTime1
             // 
             this.slblTime1.AutoSize = false;
             this.slblTime1.Name = "slblTime1";
-            this.slblTime1.Size = new System.Drawing.Size(48, 24);
+            this.slblTime1.Size = new System.Drawing.Size(48, 25);
             this.slblTime1.Text = "0 ms";
             this.slblTime1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -860,14 +836,14 @@
             // 
             this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(78, 24);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(64, 25);
             this.toolStripStatusLabel2.Text = "Plot Cycle";
             // 
             // slblTime2
             // 
             this.slblTime2.AutoSize = false;
             this.slblTime2.Name = "slblTime2";
-            this.slblTime2.Size = new System.Drawing.Size(48, 24);
+            this.slblTime2.Size = new System.Drawing.Size(48, 25);
             this.slblTime2.Text = "0 ms";
             this.slblTime2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -875,37 +851,28 @@
             // 
             this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(81, 24);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(66, 25);
             this.toolStripStatusLabel3.Text = "No. points";
             // 
             // slblCount
             // 
             this.slblCount.AutoSize = false;
             this.slblCount.Name = "slblCount";
-            this.slblCount.Size = new System.Drawing.Size(48, 24);
+            this.slblCount.Size = new System.Drawing.Size(48, 25);
             this.slblCount.Text = "0";
             this.slblCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pnl123
-            // 
-            this.pnl123.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl123.Location = new System.Drawing.Point(1024, 0);
-            this.pnl123.Name = "pnl123";
-            this.pnl123.Size = new System.Drawing.Size(6, 148);
-            this.pnl123.TabIndex = 112;
-            // 
             // frmSCADA
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1582, 897);
+            this.ClientSize = new System.Drawing.Size(1188, 729);
             this.Controls.Add(this.pnl1);
             this.Controls.Add(this.mnuMain);
             this.Controls.Add(this.statusMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuMain;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1600, 800);
+            this.MinimumSize = new System.Drawing.Size(1204, 657);
             this.Name = "frmSCADA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SCADA";

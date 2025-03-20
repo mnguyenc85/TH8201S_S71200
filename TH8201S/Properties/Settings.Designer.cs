@@ -22,5 +22,17 @@ namespace TH8201S.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DbSrc {
+            get {
+                return ((string)(this["DbSrc"]));
+            }
+            set {
+                this["DbSrc"] = value;
+            }
+        }
     }
 }
